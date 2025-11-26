@@ -21,10 +21,10 @@ function TeamMembersGrid({ members, title }) {
       <h3 className="text-xl font-bold mb-3 text-boltsRed">{title}</h3>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-6 justify-items-center">
         {members.map((m, i) => (
-          <div key={i} className="flex flex-col items-center">
-            <div className="w-16 h-16 bg-boltsBlack text-boltsWhite rounded-full flex items-center justify-center mb-2 animate-fadeIn">
+          <div key={i} className="flex flex-col items-center p-4 rounded-lg border border-gray-200 shadow-md bg-white">
+            <div className="w-16 h-16 bg-boltsBlack text-boltsWhite rounded-lg flex items-center justify-center mb-2 animate-fadeIn shadow-sm">
               {m.img ? (
-                <img src={m.img} alt={m.name} className="w-full h-full rounded-full object-cover" />
+                <img src={m.img} alt={m.name} className="w-full h-full rounded-lg object-cover" />
               ) : (
                 <span className="font-bold text-lg">{m.name}</span>
               )}
@@ -40,7 +40,7 @@ function TeamMembersGrid({ members, title }) {
 
 export default function TeamGrid() {
   return (
-    <section className="py-16 px-4 bg-boltsWhite text-boltsBlack">
+    <section id="team" className="py-16 px-4 bg-boltsWhite text-boltsBlack">
       <h2 className="text-2xl font-bold text-boltsBlack mb-8 text-center">Meet the Teams</h2>
       <TeamMembersGrid members={aTeam} title="A Team" />
       <TeamMembersGrid members={bTeam} title="B Team" />

@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* Style all buttons site-wide in red */
+  button {
+    @apply bg-red-600 text-white hover:bg-red-700 transition-colors;
+  }
+}

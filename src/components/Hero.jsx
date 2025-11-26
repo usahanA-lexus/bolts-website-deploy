@@ -1,7 +1,7 @@
 import React from "react";
 export default function Hero() {
   return (
-    <section className="min-h-[60vh] flex flex-col justify-center items-center bg-boltsRed text-boltsWhite">
+    <section id="hero" className="min-h-[60vh] flex flex-col justify-center items-center bg-boltsRed text-boltsWhite">
       {/* Placeholder logo */}
       <div className="w-28 h-28 bg-boltsWhite rounded-full flex items-center justify-center mb-6">
         <span className="text-boltsRed font-black text-3xl">B</span>
