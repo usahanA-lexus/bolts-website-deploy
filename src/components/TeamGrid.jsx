@@ -1,24 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 
 // Batman Crew!
-import Batman from "../../Team Members Headshots/Batman.png";
-import Robin1 from "../../Team Members Headshots/Robin1.png";
-import Robin2 from "../../Team Members Headshots/Robin2.png";
-import Robin3 from "../../Team Members Headshots/Robin3.png";
-import Robin4 from "../../Team Members Headshots/Robin4.png";
-import Robin5 from "../../Team Members Headshots/Robin5.png";
-import Robin6 from "../../Team Members Headshots/Robin6.png";
-import Robin7 from "../../Team Members Headshots/Robin7.png";
+import Batman from "../assets/team/Batman.png";
+import Robin1 from "../assets/team/Robin1.png";
+import Robin2 from "../assets/team/Robin2.png";
+import Robin3 from "../assets/team/Robin3.png";
+import Robin4 from "../assets/team/Robin4.png";
+import Robin5 from "../assets/team/Robin5.png";
+import Robin6 from "../assets/team/Robin6.png";
+import Robin7 from "../assets/team/Robin7.png";
 
 // Actual headshots!
-import Member1 from "../../Team Members Headshots/Aiden.png";
-import Member2 from "../../Team Members Headshots/Manju!!.png";
-import Member3 from "../../Team Members Headshots/Nate.png";
-import Member4 from "../../Team Members Headshots/Bryce.png";
-import Member5 from "../../Team Members Headshots/Eric.png";
-import Member6 from "../../Team Members Headshots/Jesus.png";
-import Member7 from "../../Team Members Headshots/Nathan.png";
-import Member8 from "../../Team Members Headshots/Zachary.png";
+import Member1 from "../assets/team/Aiden.png";
+import Member2 from "../assets/team/Manju!!.png";
+import Member3 from "../assets/team/Nate.png";
+import Member4 from "../assets/team/Bryce.png";
+import Member5 from "../assets/team/Eric.png";
+import Member6 from "../assets/team/Jesus.png";
+import Member7 from "../assets/team/Nathan.png";
+import Member8 from "../assets/team/Zachary.png";
 
 const actualMembers = 
 [
