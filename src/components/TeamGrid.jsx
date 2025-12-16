@@ -1,36 +1,75 @@
-import React from "react";
-const aTeam = [
-  { name: "A1", role: "Builder", img: "" },
-  { name: "A2", role: "Programmer", img: "" },
-  { name: "A3", role: "Drive Coach", img: "" },
-  { name: "A4", role: "Designer", img: "" },
-  { name: "A5", role: "Scout", img: "" },
+import React, { useEffect, useRef, useState } from "react";
+
+// Batman Crew!
+import Batman from "../../Team Members Headshots/Batman.png";
+import Robin1 from "../../Team Members Headshots/Robin1.png";
+import Robin2 from "../../Team Members Headshots/Robin2.png";
+import Robin3 from "../../Team Members Headshots/Robin3.png";
+import Robin4 from "../../Team Members Headshots/Robin4.png";
+import Robin5 from "../../Team Members Headshots/Robin5.png";
+import Robin6 from "../../Team Members Headshots/Robin6.png";
+import Robin7 from "../../Team Members Headshots/Robin7.png";
+
+// Actual headshots!
+import Member1 from "../../Team Members Headshots/Aiden.png";
+import Member2 from "../../Team Members Headshots/Manju!!.png";
+import Member3 from "../../Team Members Headshots/Nate.png";
+import Member4 from "../../Team Members Headshots/Bryce.png";
+import Member5 from "../../Team Members Headshots/Eric.png";
+import Member6 from "../../Team Members Headshots/Jesus.png";
+import Member7 from "../../Team Members Headshots/Nathan.png";
+import Member8 from "../../Team Members Headshots/Zachary.png";
+
+const actualMembers = 
+[
+  { name: "Aiden", img: Member1 },
+  { name: "Manju", img: Member2 },
+  { name: "Nate", img: Member3 },
+  { name: "Bryce", img: Member4 },
+  { name: "Eric", img: Member5 },
+  { name: "Jesus", img: Member6 },
+  { name: "Nathan", img: Member7 },
+  { name: "Zachary", img: Member8 },
 ];
 
-const bTeam = [
-  { name: "B1", role: "Builder", img: "" },
-  { name: "B2", role: "Programmer", img: "" },
-  { name: "B3", role: "Drive Coach", img: "" },
-  { name: "B4", role: "Designer", img: "" },
-  { name: "B5", role: "Scout", img: "" },
+const batCrew = 
+[
+  { name: "Batman", img: Batman },
+  { name: "Robin 1", img: Robin1 },
+  { name: "Robin 2", img: Robin2 },
+  { name: "Robin 3", img: Robin3 },
+  { name: "Robin 4", img: Robin4 },
+  { name: "Robin 5", img: Robin5 },
+  { name: "Robin 6", img: Robin6 },
+  { name: "Robin 7", img: Robin7 },
 ];
 
-function TeamMembersGrid({ members, title }) {
+function TeamMembersGrid({ members, title, isSpinning })
+{
   return (
     <div className="mb-8">
-      <h3 className="text-xl font-bold mb-3 text-boltsRed">{title}</h3>
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-6 justify-items-center">
+      <h3 className="text-xl font-bold mb-3 text-center text-boltsRed">
+        {title}
+      </h3>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 justify-items-center">
         {members.map((m, i) => (
-          <div key={i} className="flex flex-col items-center p-4 rounded-lg border border-gray-200 shadow-md bg-white">
-            <div className="w-16 h-16 bg-boltsBlack text-boltsWhite rounded-lg flex items-center justify-center mb-2 animate-fadeIn shadow-sm">
-              {m.img ? (
-                <img src={m.img} alt={m.name} className="w-full h-full rounded-lg object-cover" />
-              ) : (
-                <span className="font-bold text-lg">{m.name}</span>
-              )}
+          <div
+            key={m.name}
+            className="flex flex-col items-center p-4 rounded-lg border border-gray-200 shadow-md bg-white"
+          >
+            <div
+              className={`w-24 h-24 bg-gray-100 text-boltsBlack rounded-full flex items-center justify-center mb-2 overflow-hidden ${
+                isSpinning ? "animate-spin-decelerate" : ""
+              }`}
+            >
+              <img
+                src={m.img}
+                alt={m.name}
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="font-semibold">{m.name}</span>
-            <span className="text-xs text-boltsRed">{m.role}</span>
           </div>
         ))}
       </div>
@@ -38,12 +77,66 @@ function TeamMembersGrid({ members, title }) {
   );
 }
 
-export default function TeamGrid() {
+export default function TeamGrid() 
+{
+  const [isSpinning, setIsSpinning] = useState(false);
+  const sectionRef = useRef(null);
+  const timeoutRef = useRef(null);
+
+  useEffect(() => 
+    {
+    const sectionEl = sectionRef.current;
+    if (!sectionEl) return;
+
+    const observer = new IntersectionObserver((entries) => 
+      {
+      entries.forEach((entry) => 
+      {
+        if (entry.isIntersecting) 
+        {
+          setIsSpinning(true);
+          if (timeoutRef.current) 
+          {
+            clearTimeout(timeoutRef.current);
+          }
+          timeoutRef.current = setTimeout(() => 
+          {
+            setIsSpinning(false);
+          }, 1800);
+        }
+      });
+    }, { threshold: 0.10 });
+
+    observer.observe(sectionEl);
+    return () => 
+      {
+      observer.disconnect();
+      if (timeoutRef.current) 
+      {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="team" className="py-16 px-4 bg-boltsWhite text-boltsBlack">
-      <h2 className="text-2xl font-bold text-boltsBlack mb-8 text-center">Meet the Teams</h2>
-      <TeamMembersGrid members={aTeam} title="A Team" />
-      <TeamMembersGrid members={bTeam} title="B Team" />
+    <section
+      id="team"
+      className="py-16 px-4 bg-boltsWhite text-boltsBlack space-y-5"
+      ref={sectionRef}
+    >
+      <h2 className="text-2xl font-bold text-boltsBlack mb-8 text-center">
+        Meet the Teams
+      </h2>      
+      <TeamMembersGrid
+        members={batCrew}
+        title="Holy Batman!"
+        isSpinning={isSpinning}
+      />
+      <TeamMembersGrid
+        members={actualMembers}
+        title="Holy Secret Identity!"
+        isSpinning={isSpinning}
+      />
     </section>
   );
 }
