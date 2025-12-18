@@ -2,7 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+@layer utilities 
+{
+  @keyframes spin-decelerate 
+  {
+    from 
+    {
+      transform: rotate(90deg);
+    }
+    to 
+    {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-decelerate 
+  {
+    animation: spin-decelerate 1.8s cubic-bezier(0.45, 1, 0.36, 1) forwards;
+  }
+}
+
+@layer components 
+{
   /* Style all buttons site-wide in red */
   button {
     @apply bg-red-600 text-white hover:bg-red-700 transition-colors;
