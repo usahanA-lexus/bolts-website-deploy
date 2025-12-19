@@ -9,27 +9,30 @@ import Robin4 from "../assets/team/Robin4.png";
 import Robin5 from "../assets/team/Robin5.png";
 import Robin6 from "../assets/team/Robin6.png";
 import Robin7 from "../assets/team/Robin7.png";
+import Robin8 from "../assets/team/Robin8.png";
 
 // Actual headshots!
-import Member1 from "../assets/team/Aiden.png";
-import Member2 from "../assets/team/Manju!!.png";
-import Member3 from "../assets/team/Nate.png";
-import Member4 from "../assets/team/Bryce.png";
-import Member5 from "../assets/team/Eric.png";
-import Member6 from "../assets/team/Jesus.png";
-import Member7 from "../assets/team/Nathan.png";
-import Member8 from "../assets/team/Zachary.png";
+import Leader from "../assets/team/Aiden.png";
+import Member1 from "../assets/team/Manju!!.png";
+import Member2 from "../assets/team/Nate.png";
+import Member3 from "../assets/team/Bryce.png";
+import Member4 from "../assets/team/Eric.png";
+import Member5 from "../assets/team/Jesus.png";
+import Member6 from "../assets/team/Nathan.png";
+import Member7 from "../assets/team/Zachary.png";
+import Member8 from "../assets/team/Alexus.png";
 
 const actualMembers = 
 [
-  { name: "Aiden", img: Member1 },
-  { name: "Manju", img: Member2 },
-  { name: "Nate", img: Member3 },
-  { name: "Bryce", img: Member4 },
-  { name: "Eric", img: Member5 },
-  { name: "Jesus", img: Member6 },
-  { name: "Nathan", img: Member7 },
-  { name: "Zachary", img: Member8 },
+  { name: "Aiden", img: Leader },
+  { name: "Manju", img: Member1 },
+  { name: "Nate", img: Member2 },
+  { name: "Bryce", img: Member3 },
+  { name: "Eric", img: Member4 },
+  { name: "Jesus", img: Member5 },
+  { name: "Nathan", img: Member6 },
+  { name: "Zachary", img: Member7 },
+  { name: "Alexus", img: Member8 },
 ];
 
 const batCrew = 
@@ -42,6 +45,7 @@ const batCrew =
   { name: "Robin 5", img: Robin5 },
   { name: "Robin 6", img: Robin6 },
   { name: "Robin 7", img: Robin7 },
+  { name: "Robin 8", img: Robin8 },
 ];
 
 function TeamMembersGrid({ members, title, isSpinning })
@@ -52,7 +56,7 @@ function TeamMembersGrid({ members, title, isSpinning })
         {title}
       </h3>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 justify-items-center">
+      <div className="grid grid-cols-3 gap-6 justify-items-center">
         {members.map((m, i) => (
           <div
             key={m.name}
@@ -66,7 +70,14 @@ function TeamMembersGrid({ members, title, isSpinning })
               <img
                 src={m.img}
                 alt={m.name}
-                className="w-full h-full object-cover"
+                className={
+                  "w-full h-full " +
+                  (m.name === "Alexus"
+                    ? "object-contain object-bottom transform origin-bottom scale-75"
+                    : m.name === "Robin 8"
+                      ? "object-contain object-bottom"
+                      : "object-cover")
+                }
               />
             </div>
             <span className="font-semibold">{m.name}</span>
