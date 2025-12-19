@@ -1,10 +1,14 @@
 import React from "react";
 import { useState } from 'react';
 
+import teambuilding1 from "../assets/gallery/teambuilding1.jpg";
+import teambuilding2 from "../assets/gallery/teambuilding2.jpg";
+import teambuilding3 from "../assets/gallery/teambuilding3.jpg";
+
 const placeholders = [
-  { caption: "Prep Time!", img: "https://via.placeholder.com/400x200?text=Gallery+1" },
-  { caption: "Team Workshop!", img: "https://via.placeholder.com/400x200?text=Gallery+2" },
-  { caption: "Prototype Zone", img: "https://via.placeholder.com/400x200?text=Gallery+3" }
+  { caption: "Building the robot!", img: teambuilding1 },
+  { caption: "Team Workshop!", img: teambuilding2 },
+  { caption: "Prototype Zone!", img: teambuilding3, alignBottom: true }
 ];
 
 export default function GalleryCarousel() {
@@ -20,7 +24,9 @@ export default function GalleryCarousel() {
           <img
             src={placeholders[current].img}
             alt={placeholders[current].caption}
-            className="w-full h-full object-cover transition-opacity duration-500"
+            className={`w-full h-full object-cover transition-opacity duration-500 ${
+              placeholders[current].alignBottom ? "object-bottom" : ""
+            }`}
           />
           {/* Minimal navigation arrows */}
           <button
