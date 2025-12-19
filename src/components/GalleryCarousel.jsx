@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from 'react';
 
-import teambuilding1 from "../assets/gallery/teambuilding1.jpg";
-import teambuilding2 from "../assets/gallery/teambuilding2.jpg";
-import teambuilding3 from "../assets/gallery/teambuilding3.jpg";
+import teambuilding1 from "../assets/gallery/teamBuilding1.jpg";
+import teambuilding2 from "../assets/gallery/teamBuilding2.jpg";
+import teambuilding3 from "../assets/gallery/teamBuilding3.jpg";
 
 const placeholders = [
   { caption: "Building the robot!", img: teambuilding1 },
