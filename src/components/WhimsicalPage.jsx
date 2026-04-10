@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Navbar from './Navbar'
 
 // Batman Crew!
 import Batman from "../assets/team/Batman.png";
@@ -11,33 +12,7 @@ import Robin6 from "../assets/team/Robin6.png";
 import Robin7 from "../assets/team/Robin7.png";
 import Robin8 from "../assets/team/Robin8.png";
 
-// Actual headshots!
-import Leader from "../assets/team/Aiden.png";
-import Member1 from "../assets/team/Manju!!.png";
-import Member2 from "../assets/team/Nate.png";
-import Member3 from "../assets/team/Bryce.png";
-import Member4 from "../assets/team/Eric.png";
-import Member5 from "../assets/team/Jesus.png";
-import Member6 from "../assets/team/Nathan.png";
-import Member7 from "../assets/team/Zachary.png";
-import Member8 from "../assets/team/Alexus.png";
-
-const actualMembers = 
-[
-  { name: "Aiden", img: Leader },
-  { name: "Manju", img: Member1 },
-  { name: "Nate", img: Member2 },
-  { name: "Bryce", img: Member3 },
-  { name: "Eric", img: Member4 },
-  { name: "Jesus", img: Member5 },
-  { name: "Nathan", img: Member6 },
-  { name: "Zachary", img: Member7 },
-  { name: "Alexus", img: Member8 },
-  { name: "Melaine", img: null },
-  { name: "Munazza", img: null },
-];
-
-const batCrew = 
+const batCrew =
 [
   { name: "Batman", img: Batman },
   { name: "Robin 1", img: Robin1 },
@@ -69,20 +44,16 @@ function TeamMembersGrid({ members, title, isSpinning })
                 isSpinning ? "animate-spin-decelerate" : ""
               }`}
             >
-              {m.img ? (
-                <img
-                  src={m.img}
-                  alt={m.name}
-                  className={
-                    "w-full h-full " +
-                    (m.name === "Alexus"
-                      ? "object-contain object-bottom transform origin-bottom scale-75"
-                      : m.name === "Robin 8"
-                        ? "object-contain object-bottom"
-                        : "object-cover")
-                  }
-                />
-              ) : null}
+              <img
+                src={m.img}
+                alt={m.name}
+                className={
+                  "w-full h-full " +
+                  (m.name === "Robin 8"
+                    ? "object-contain object-bottom"
+                    : "object-cover")
+                }
+              />
             </div>
             <span className="font-semibold">{m.name}</span>
           </div>
@@ -92,29 +63,29 @@ function TeamMembersGrid({ members, title, isSpinning })
   );
 }
 
-export default function TeamGrid() 
+export default function WhimsicalPage()
 {
   const [isSpinning, setIsSpinning] = useState(false);
   const sectionRef = useRef(null);
   const timeoutRef = useRef(null);
 
-  useEffect(() => 
+  useEffect(() =>
     {
     const sectionEl = sectionRef.current;
     if (!sectionEl) return;
 
-    const observer = new IntersectionObserver((entries) => 
+    const observer = new IntersectionObserver((entries) =>
       {
-      entries.forEach((entry) => 
+      entries.forEach((entry) =>
       {
-        if (entry.isIntersecting) 
+        if (entry.isIntersecting)
         {
           setIsSpinning(true);
-          if (timeoutRef.current) 
+          if (timeoutRef.current)
           {
             clearTimeout(timeoutRef.current);
           }
-          timeoutRef.current = setTimeout(() => 
+          timeoutRef.current = setTimeout(() =>
           {
             setIsSpinning(false);
           }, 1800);
@@ -123,10 +94,10 @@ export default function TeamGrid()
     }, { threshold: 0.10 });
 
     observer.observe(sectionEl);
-    return () => 
+    return () =>
       {
       observer.disconnect();
-      if (timeoutRef.current) 
+      if (timeoutRef.current)
       {
         clearTimeout(timeoutRef.current);
       }
@@ -134,18 +105,21 @@ export default function TeamGrid()
   }, []);
 
   return (
-    <section
-      id="team"
-      className="py-16 px-4 bg-boltsWhite text-boltsBlack space-y-5"
-      ref={sectionRef}
-    >
-      <h2 className="text-2xl font-bold text-boltsBlack mb-8 text-center">
-        Meet the Team
-      </h2>      
-      <TeamMembersGrid
-        members={actualMembers}
-        isSpinning={isSpinning}
-      />
-    </section>
+    <main className="bg-boltsWhite font-sans min-h-screen scroll-smooth">
+      <Navbar />
+      <section
+        className="py-16 px-4 bg-boltsWhite text-boltsBlack space-y-5 pt-24"
+        ref={sectionRef}
+      >
+        <h2 className="text-2xl font-bold text-boltsBlack mb-8 text-center">
+          Holy Whimsical!
+        </h2>
+        <TeamMembersGrid
+          members={batCrew}
+          title="Holy Bat Crew!"
+          isSpinning={isSpinning}
+        />
+      </section>
+    </main>
   );
 }
