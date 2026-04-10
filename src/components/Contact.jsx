@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DiscordQR from "../assets/Gallery/Discord QR.png";
+import DiscordQR from "../assets/gallery/Discord QR.png";
 
 export default function Contact() {
   return (
