@@ -80,12 +80,13 @@ export default function Navbar() {
           Whimsical
         </Link>
         </div>
-        <Link to="/" className="flex-shrink-0">
+        <Link to="/" className="flex-shrink-0 flex flex-col items-center">
           <img
             src={logo}
             alt="Bolts Robotics Logo"
             className="w-16 h-16 object-contain"
           />
+          <p className="text-xs text-white font-semibold">VEX U Team</p>
         </Link>
       </div>
     </nav>
