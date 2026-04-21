@@ -37,7 +37,7 @@ function TeamMembersGrid({ members, title, isSpinning })
 {
   return (
     <div className="mb-8">
-      <h3 className="text-xl font-bold mb-3 text-center text-boltsRed">
+      <h3 className="mb-3 text-center text-xl font-semibold text-boltsRed">
         {title}
       </h3>
 
@@ -45,7 +45,7 @@ function TeamMembersGrid({ members, title, isSpinning })
         {members.map((m, i) => (
           <div
             key={m.name}
-            className="flex flex-col items-center p-4 rounded-lg border border-gray-200 shadow-md bg-white"
+            className="flex flex-col items-center rounded-lg border border-gray-100 bg-white p-3 shadow-sm"
           >
             <div
               className={`w-24 h-24 bg-gray-100 text-boltsBlack rounded-full flex items-center justify-center mb-2 overflow-hidden ${
@@ -63,7 +63,7 @@ function TeamMembersGrid({ members, title, isSpinning })
                 }
               />
             </div>
-            <span className="font-semibold">{m.name}</span>
+            <span className="font-medium">{m.name}</span>
           </div>
         ))}
       </div>
@@ -119,7 +119,7 @@ export default function WhimsicalPage()
         className="py-16 px-4 bg-boltsWhite text-boltsBlack space-y-5 pt-24"
         ref={sectionRef}
       >
-        <h2 className="text-2xl font-bold text-boltsBlack mb-8 text-center">
+        <h2 className="mb-8 text-center text-2xl font-semibold tracking-tight text-boltsBlack">
           Holy Whimsical!
         </h2>
         <TeamMembersGrid

@@ -19,7 +19,8 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -57,37 +58,40 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-red-600/50" : "bg-red-600"
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-white/10 transition-colors duration-300 ${
+        scrolled ? "bg-black/60 backdrop-blur-md" : "bg-black"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center gap-8">
-        <div className="flex justify-center gap-8 flex-1">
-        {navItems.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            onClick={(e) => handleNavClick(e, item.href)}
-            className="text-white font-semibold hover:text-red-200 transition-colors cursor-pointer"
-          >
-            {item.label}
-          </a>
-        ))}
+      <div className="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4 md:gap-8">
         <Link
-          to="/whimsical"
-          className="text-white font-semibold hover:text-red-200 transition-colors"
+          to="/"
+          className="flex flex-shrink-0 items-center overflow-hidden rounded-lg bg-black p-0.5 ring-1 ring-white/10 transition-shadow hover:ring-white/20"
+          title="Bolts Robotics — Home"
         >
-          Whimsical
-        </Link>
-        </div>
-        <Link to="/" className="flex-shrink-0 flex flex-col items-center">
           <img
             src={logo}
             alt="Bolts Robotics Logo"
-            className="w-16 h-16 object-contain"
+            className="h-14 w-14 object-contain sm:h-16 sm:w-16"
           />
-          <p className="text-xs text-white font-semibold">VEX U Team</p>
         </Link>
+        <div className="flex flex-1 flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 md:justify-end">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
+              className="text-white font-medium tracking-wide hover:text-red-400 transition-colors cursor-pointer"
+            >
+              {item.label}
+            </a>
+          ))}
+          <Link
+            to="/whimsical"
+            className="text-white font-medium tracking-wide transition-colors hover:text-red-400"
+          >
+            Whimsical
+          </Link>
+        </div>
       </div>
     </nav>
   );

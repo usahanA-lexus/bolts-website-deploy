@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply font-normal tracking-tight text-boltsBlack;
+  }
+}
+
 @layer utilities 
 {
   @keyframes spin-decelerate 
