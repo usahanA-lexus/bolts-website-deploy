@@ -26,7 +26,7 @@ const actualMembers = [
   { name: "Alexus", img: Member8 },
   { name: "Alan", img: Member9 },
   { name: "Chris", img: Member10 },
-  { name: "Melaine", img: Member11 },
+  { name: "Melanie", img: Member11 },
   { name: "Munazza", img: Member12 },
 ];
 
