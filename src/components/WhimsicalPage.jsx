@@ -15,6 +15,7 @@ import Robin9 from "../assets/team/Robin9.png";
 import Robin10 from "../assets/team/Robin10.png";
 import Robin11 from "../assets/team/Robin11.png";
 import Robin12 from "../assets/team/Robin12.png";
+import Robin13 from "../assets/team/Robin13.png";
 
 const batCrew =
 [
@@ -31,6 +32,7 @@ const batCrew =
   { name: "Robin 10", img: Robin10 },
   { name: "Robin 11", img: Robin11 },
   { name: "Robin 12", img: Robin12 },
+  { name: "Robin 13", img: Robin13 },
 ];
 
 function TeamMembersGrid({ members, title, isSpinning })

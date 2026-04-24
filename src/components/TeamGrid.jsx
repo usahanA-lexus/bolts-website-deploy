@@ -13,21 +13,23 @@ import Member9 from "../assets/team/Alan.png";
 import Member10 from "../assets/team/Chris.png";
 import Member11 from "../assets/team/Melaine.png";
 import Member12 from "../assets/team/Munazza.png";
+import Member13 from "../assets/team/Rachel.png";
 
 const actualMembers = [
-  { name: "Aiden", img: Leader },
+  { name: "Aiden", img: Leader, major: "Mechanical Engineering" },
   { name: "Manju", img: Member1 },
-  { name: "Nate", img: Member2 },
+  { name: "Nate", img: Member2, major: "Computer Science" },
   { name: "Bryce", img: Member3 },
-  { name: "Eric", img: Member4 },
-  { name: "Jesus", img: Member5 },
-  { name: "Nathan", img: Member6 },
-  { name: "Zachary", img: Member7 },
-  { name: "Alexus", img: Member8 },
-  { name: "Alan", img: Member9 },
-  { name: "Chris", img: Member10 },
-  { name: "Melanie", img: Member11 },
-  { name: "Munazza", img: Member12 },
+  { name: "Eric", img: Member4, major: "Computer Science" },
+  { name: "Jesus", img: Member5, major: "Computer Science" },
+  { name: "Nathan", img: Member6, major: "Computer Science" },
+  { name: "Zachary", img: Member7, major: "Computer Science" },
+  { name: "Alexus", img: Member8, major: "Computer Science" },
+  { name: "Alan", img: Member9, major: "Math"},
+  { name: "Chris", img: Member10, major:"Mechanical Engineering" },
+  { name: "Melanie", img: Member11, major: "Data Science"},
+  { name: "Munazza", img: Member12, major:"Computer Engineering" },
+  { name: "Rachel", img: Member13, major: "Computer Science" },
 ];
 
 function TeamMembersGrid({ members, title, isSpinning }) {
@@ -62,8 +64,11 @@ function TeamMembersGrid({ members, title, isSpinning }) {
                   }
                 />
               ) : null}
-            </div>
+          </div>
             <span className="font-medium">{m.name}</span>
+            {m.major ? (
+              <span className="block text-sm text-gray-500">{m.major}</span>
+            ) : null}
           </div>
         ))}
       </div>
