@@ -162,9 +162,9 @@
     },
     {
       "name": "Jackson",
-      "major": "",
+      "major": "Computer Science",
       "photo": "Jackson.jpg",
-      "team": 2,
+      "team": 1,
       "execTitle": null,
       "founder": false,
       "lead": false,
@@ -172,9 +172,9 @@
     },
     {
       "name": "Paul",
-      "major": "",
+      "major": "Mechanical Engineering",
       "photo": "Paul.jpg",
-      "team": 2,
+      "team": 1,
       "execTitle": null,
       "founder": false,
       "lead": false,
