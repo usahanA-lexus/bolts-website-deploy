@@ -65,11 +65,7 @@ function FlipCard({ member }) {
                 alt=""
                 width={400}
                 height={400}
-                className={
-                  member.name === "Alexus"
-                    ? "h-full w-full origin-bottom scale-75 object-contain object-bottom"
-                    : "h-full w-full object-cover object-[center_20%]"
-                }
+                className="h-full w-full object-cover object-[center_20%]"
               />
             ) : (
               <div className="flex h-full items-center justify-center bg-ink">
@@ -132,11 +128,7 @@ function ExecCard({ person }) {
             alt={`${person.name}, ${person.execTitle}`}
             width={400}
             height={400}
-            className={
-              person.name === "Alexus"
-                ? "h-full w-full origin-bottom scale-75 object-contain object-bottom"
-                : "h-full w-full object-cover object-[center_20%]"
-            }
+            className="h-full w-full object-cover object-[center_20%]"
           />
         ) : (
           <div className="flex h-full items-center justify-center bg-ink">
