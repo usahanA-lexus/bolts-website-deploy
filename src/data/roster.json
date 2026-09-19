@@ -65,8 +65,8 @@
       "major": "Computer Science",
       "photo": "Nathan.jpg",
       "team": null,
-      "execTitle": null,
-      "founder": false,
+      "execTitle": "Founder",
+      "founder": true,
       "lead": false,
       "flipBack": {}
     },
