@@ -1,0 +1,154 @@
+{
+  "members": [
+    {
+      "name": "Aiden",
+      "major": "Mechanical Engineering",
+      "photo": "Aiden.jpg",
+      "team": null,
+      "execTitle": "President",
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Manju",
+      "major": "",
+      "photo": "Manju!!.jpg",
+      "team": null,
+      "execTitle": null,
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Nate",
+      "major": "Computer Science",
+      "photo": "Nate.jpg",
+      "team": 2,
+      "execTitle": null,
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Bryce",
+      "major": "",
+      "photo": "Bryce.jpg",
+      "team": null,
+      "execTitle": null,
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Eric",
+      "major": "Computer Science",
+      "photo": "Eric.jpg",
+      "team": 2,
+      "execTitle": "Secretary",
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Jesus",
+      "major": "Computer Science",
+      "photo": "Jesus.jpg",
+      "team": 1,
+      "execTitle": null,
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Nathan",
+      "major": "Computer Science",
+      "photo": "Nathan.jpg",
+      "team": null,
+      "execTitle": null,
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Zachary",
+      "major": "Computer Science",
+      "photo": "Zachary.jpg",
+      "team": 2,
+      "execTitle": null,
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Alexus",
+      "major": "Computer Science",
+      "photo": "Alexus.jpg",
+      "team": null,
+      "execTitle": "Media Manager",
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Alan",
+      "major": "Math",
+      "photo": "Alan.jpg",
+      "team": 1,
+      "execTitle": null,
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Chris",
+      "major": "Mechanical Engineering",
+      "photo": "Chris.jpg",
+      "team": 2,
+      "execTitle": "Vice President",
+      "founder": false,
+      "lead": true,
+      "flipBack": {}
+    },
+    {
+      "name": "Melanie",
+      "major": "Data Science",
+      "photo": "Melaine.jpg",
+      "team": 1,
+      "execTitle": null,
+      "founder": false,
+      "lead": true,
+      "flipBack": {}
+    },
+    {
+      "name": "Munazza",
+      "major": "Computer Engineering",
+      "photo": "Munazza.jpg",
+      "team": 1,
+      "execTitle": null,
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Rachel",
+      "major": "Computer Science",
+      "photo": "Rachel.jpg",
+      "team": 2,
+      "execTitle": null,
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Matt Long",
+      "major": "",
+      "photo": "Matt.jpg",
+      "team": null,
+      "execTitle": "Treasurer",
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    }
+  ]
+}
