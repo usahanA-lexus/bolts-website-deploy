@@ -1,25 +1,33 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import TeamGrid from './components/TeamGrid'
-import GalleryCarousel from './components/GalleryCarousel'
-import GalleryPage from './components/GalleryPage'
-import Contact from './components/Contact'
-import ContactForm from './components/ContactForm'
-import WhimsicalPage from './components/WhimsicalPage'
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Calendar from "./components/Calendar";
+import Roster from "./components/Roster";
+import GallerySection from "./components/GallerySection";
+import GalleryPage from "./components/GalleryPage";
+import Join from "./components/Join";
+import Footer from "./components/Footer";
+import Grain from "./components/Grain";
+import ContactForm from "./components/ContactForm";
+import WhimsicalPage from "./components/WhimsicalPage";
 
 function HomePage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-boltsWhite scroll-smooth pt-24 font-sans">
+    <div className="min-h-screen overflow-x-hidden bg-paper">
       <Navbar />
-      <Hero />
-      <About />
-      <GalleryCarousel />
-      <TeamGrid />
-      <Contact />
-    </main>
+      <main>
+        <Hero />
+        <About />
+        <Calendar />
+        <Roster />
+        <GallerySection />
+        <Join />
+      </main>
+      <Footer />
+      <Grain />
+    </div>
   );
 }
 
@@ -37,4 +45,5 @@ function App() {
   );
 }
 
-export default App
+export default App;
+EOF

@@ -1,0 +1,34 @@
+{
+  "timezone": "America/Los_Angeles",
+  "recurring": [
+    {
+      "id": "gbm",
+      "title": "General body meeting (GBM), everyone",
+      "day": "Friday",
+      "time": "11:30 AM",
+      "room": "GMCS 549",
+      "shortLabel": "GBM 11:30",
+      "kind": "gbm"
+    },
+    {
+      "id": "team1",
+      "title": "Team 1",
+      "day": "Wednesday",
+      "time": "4:00 PM",
+      "room": "GMCS 538",
+      "shortLabel": "T1 4 PM",
+      "kind": "team1"
+    },
+    {
+      "id": "team2",
+      "title": "Team 2",
+      "day": "Monday",
+      "time": "11:00 AM",
+      "room": "GMCS 538",
+      "shortLabel": "T2 11 AM",
+      "kind": "team2"
+    }
+  ],
+  "oneOffEvents": [],
+  "exceptions": []
+}

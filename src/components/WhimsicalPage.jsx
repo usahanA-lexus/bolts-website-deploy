@@ -1,135 +1,69 @@
-import React, { useEffect, useRef, useState } from "react";
-import Navbar from './Navbar'
+import React from "react";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import Grain from "./Grain";
+import { teamPhotos } from "../data/photos";
 
-// Batman Crew!
-import Batman from "../assets/team/Batman.png";
-import Robin1 from "../assets/team/Robin1.png";
-import Robin2 from "../assets/team/Robin2.png";
-import Robin3 from "../assets/team/Robin3.png";
-import Robin4 from "../assets/team/Robin4.png";
-import Robin5 from "../assets/team/Robin5.png";
-import Robin6 from "../assets/team/Robin6.png";
-import Robin7 from "../assets/team/Robin7.png";
-import Robin8 from "../assets/team/Robin8.png";
-import Robin9 from "../assets/team/Robin9.png";
-import Robin10 from "../assets/team/Robin10.png";
-import Robin11 from "../assets/team/Robin11.png";
-import Robin12 from "../assets/team/Robin12.png";
-import Robin13 from "../assets/team/Robin13.png";
-
-const batCrew =
-[
-  { name: "Batman", img: Batman },
-  { name: "Robin 1", img: Robin1 },
-  { name: "Robin 2", img: Robin2 },
-  { name: "Robin 3", img: Robin3 },
-  { name: "Robin 4", img: Robin4 },
-  { name: "Robin 5", img: Robin5 },
-  { name: "Robin 6", img: Robin6 },
-  { name: "Robin 7", img: Robin7 },
-  { name: "Robin 8", img: Robin8 },
-  { name: "Robin 9", img: Robin9 },
-  { name: "Robin 10", img: Robin10 },
-  { name: "Robin 11", img: Robin11 },
-  { name: "Robin 12", img: Robin12 },
-  { name: "Robin 13", img: Robin13 },
+const batCrew = [
+  { name: "Batman", photo: "Batman.jpg" },
+  { name: "Robin 1", photo: "Robin1.jpg" },
+  { name: "Robin 2", photo: "Robin2.jpg" },
+  { name: "Robin 3", photo: "Robin3.jpg" },
+  { name: "Robin 4", photo: "Robin4.jpg" },
+  { name: "Robin 5", photo: "Robin5.jpg" },
+  { name: "Robin 6", photo: "Robin6.jpg" },
+  { name: "Robin 7", photo: "Robin7.jpg" },
+  { name: "Robin 8", photo: "Robin8.jpg" },
+  { name: "Robin 9", photo: "Robin9.jpg" },
+  { name: "Robin 10", photo: "Robin10.jpg" },
+  { name: "Robin 11", photo: "Robin11.jpg" },
+  { name: "Robin 12", photo: "Robin12.jpg" },
+  { name: "Robin 13", photo: "Robin13.jpg" },
 ];
 
-function TeamMembersGrid({ members, title, isSpinning })
-{
+export default function WhimsicalPage() {
   return (
-    <div className="mb-8">
-      <h3 className="mb-3 text-center text-xl font-semibold text-boltsRed">
-        {title}
-      </h3>
+    <div className="min-h-screen bg-paper">
+      <Navbar />
+      <main className="section-pad py-12 md:py-16">
+        <div className="mb-10 flex flex-col items-start gap-4">
+          <div className="sticker">Whimsical</div>
+          <h1 className="headline misreg-red text-[clamp(48px,9vw,96px)]">
+            Holy Whimsical!
+          </h1>
+          <p className="headline m-0 text-[clamp(28px,5vw,48px)] text-red">
+            Holy Bat Crew!
+          </p>
+        </div>
 
-      <div className="grid grid-cols-3 gap-6 justify-items-center">
-        {members.map((m, i) => (
-          <div
-            key={m.name}
-            className="flex flex-col items-center rounded-lg border border-gray-100 bg-white p-3 shadow-sm"
-          >
-            <div
-              className={`w-24 h-24 bg-gray-100 text-boltsBlack rounded-full flex items-center justify-center mb-2 overflow-hidden ${
-                isSpinning ? "animate-spin-decelerate" : ""
-              }`}
-            >
-              <img
-                src={m.img}
-                alt={m.name}
-                className={
-                  "w-full h-full " +
-                  (m.name === "Robin 8"
-                    ? "object-contain object-bottom"
-                    : "object-cover")
-                }
-              />
-            </div>
-            <span className="font-medium">{m.name}</span>
-          </div>
-        ))}
-      </div>
+        <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 md:gap-6">
+          {batCrew.map((member) => {
+            const src = teamPhotos[member.photo];
+            return (
+              <figure
+                key={member.name}
+                className="m-0 flex flex-col items-center gap-3 border-[3px] border-ink bg-paper p-4 shadow-[5px_5px_0_var(--ink)]"
+              >
+                <div className="duotone h-24 w-24 overflow-hidden rounded-full border-[3px] border-ink">
+                  <img
+                    src={src}
+                    alt={member.name}
+                    width={96}
+                    height={96}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <figcaption className="text-center text-sm font-semibold">
+                  {member.name}
+                </figcaption>
+              </figure>
+            );
+          })}
+        </div>
+      </main>
+      <Footer />
+      <Grain />
     </div>
   );
 }
-
-export default function WhimsicalPage()
-{
-  const [isSpinning, setIsSpinning] = useState(false);
-  const sectionRef = useRef(null);
-  const timeoutRef = useRef(null);
-
-  useEffect(() =>
-    {
-    const sectionEl = sectionRef.current;
-    if (!sectionEl) return;
-
-    const observer = new IntersectionObserver((entries) =>
-      {
-      entries.forEach((entry) =>
-      {
-        if (entry.isIntersecting)
-        {
-          setIsSpinning(true);
-          if (timeoutRef.current)
-          {
-            clearTimeout(timeoutRef.current);
-          }
-          timeoutRef.current = setTimeout(() =>
-          {
-            setIsSpinning(false);
-          }, 1800);
-        }
-      });
-    }, { threshold: 0.10 });
-
-    observer.observe(sectionEl);
-    return () =>
-      {
-      observer.disconnect();
-      if (timeoutRef.current)
-      {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
-
-  return (
-    <main className="bg-boltsWhite font-sans min-h-screen scroll-smooth">
-      <Navbar />
-      <section
-        className="py-16 px-4 bg-boltsWhite text-boltsBlack space-y-5 pt-24"
-        ref={sectionRef}
-      >
-        <h2 className="mb-8 text-center text-2xl font-semibold tracking-tight text-boltsBlack">
-          Holy Whimsical!
-        </h2>
-        <TeamMembersGrid
-          members={batCrew}
-          title="Holy Bat Crew!"
-          isSpinning={isSpinning}
-        />
-      </section>
-    </main>
-  );
-}
+EOF
