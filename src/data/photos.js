@@ -27,6 +27,7 @@ import robin11 from "../assets/team/Robin11.jpg";
 import robin12 from "../assets/team/Robin12.jpg";
 import robin13 from "../assets/team/Robin13.jpg";
 import zachary from "../assets/team/Zachary.jpg";
+import john from "../assets/team/John.jpg";
 
 import photo20260130_103231 from "../assets/gallery/20260130_103231.jpg";
 import photo20260130_103635 from "../assets/gallery/20260130_103635.jpg";
@@ -71,6 +72,7 @@ export const teamPhotos = {
   "Robin12.jpg": robin12,
   "Robin13.jpg": robin13,
   "Zachary.jpg": zachary,
+  "John.jpg": john,
 };
 
 export const galleryPhotos = [

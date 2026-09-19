@@ -149,6 +149,16 @@
       "founder": false,
       "lead": false,
       "flipBack": {}
+    },
+    {
+      "name": "John",
+      "major": "",
+      "photo": "John.jpg",
+      "team": 2,
+      "execTitle": null,
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
     }
   ]
 }
