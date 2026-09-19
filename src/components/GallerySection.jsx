@@ -12,7 +12,13 @@ function GalleryTile({ photo, large = false, inkShadow = true }) {
       } ${inkShadow ? "shadow-[6px_6px_0_var(--ink)]" : "shadow-[5px_5px_0_var(--red)]"}`}
     >
       <div className="duotone absolute inset-0">
-        <img src={photo.src} alt={photo.alt} width={640} height={420} />
+        <img
+          src={photo.src}
+          alt={photo.alt}
+          width={640}
+          height={420}
+          className="h-full w-full object-cover object-center"
+        />
       </div>
       <figcaption className="absolute bottom-2 left-2 z-[1] md:bottom-3 md:left-3">
         <span className="inline-block border-2 border-ink bg-paper px-2 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-ink md:text-[11px]">
@@ -39,7 +45,6 @@ export default function GallerySection() {
           </h2>
         </div>
         <p className="m-0 max-w-[380px] text-base leading-relaxed md:text-lg">
-          Captioned like a build log, newest first.{" "}
           <Link to="/gallery" className="font-semibold text-red-text underline">
             See all photos
           </Link>

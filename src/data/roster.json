@@ -159,6 +159,26 @@
       "founder": false,
       "lead": false,
       "flipBack": {}
+    },
+    {
+      "name": "Jackson",
+      "major": "",
+      "photo": "Jackson.jpg",
+      "team": 2,
+      "execTitle": null,
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
+    },
+    {
+      "name": "Paul",
+      "major": "",
+      "photo": "Paul.jpg",
+      "team": 2,
+      "execTitle": null,
+      "founder": false,
+      "lead": false,
+      "flipBack": {}
     }
   ]
 }

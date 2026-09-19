@@ -65,7 +65,11 @@ function FlipCard({ member }) {
                 alt=""
                 width={400}
                 height={400}
-                className="h-full w-full object-cover object-[center_20%]"
+                className={
+                  member.name === "Alexus"
+                    ? "h-full w-full origin-bottom scale-75 object-contain object-bottom"
+                    : "h-full w-full object-cover object-[center_20%]"
+                }
               />
             ) : (
               <div className="flex h-full items-center justify-center bg-ink">
@@ -128,7 +132,11 @@ function ExecCard({ person }) {
             alt={`${person.name}, ${person.execTitle}`}
             width={400}
             height={400}
-            className="h-full w-full object-cover object-[center_20%]"
+            className={
+              person.name === "Alexus"
+                ? "h-full w-full origin-bottom scale-75 object-contain object-bottom"
+                : "h-full w-full object-cover object-[center_20%]"
+            }
           />
         ) : (
           <div className="flex h-full items-center justify-center bg-ink">
@@ -191,8 +199,6 @@ export default function Roster() {
   const execs = members.filter((m) => m.execTitle);
   const team1 = members.filter((m) => m.team === 1);
   const team2 = members.filter((m) => m.team === 2);
-  // Anyone without a build team (includes exec-only). Photos may also appear above.
-  const unassigned = members.filter((m) => m.team == null);
 
   return (
     <section
@@ -233,26 +239,6 @@ export default function Roster() {
             <TeamBlock teamNumber={1} members={team1} />
             <TeamBlock teamNumber={2} members={team2} />
           </div>
-
-          {unassigned.length > 0 ? (
-            <div className="mt-14 flex flex-col gap-5">
-              <div className="flex flex-col gap-2">
-                <div className="mono-label text-[13px] text-muted-paper">
-                  Also on the roster
-                </div>
-                <p className="m-0 max-w-xl text-sm text-muted-paper">
-                  Builders without a team assignment yet, plus exec members who
-                  are not on Team 1 or Team 2. Photos may repeat from the exec
-                  board above.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-5">
-                {unassigned.map((member) => (
-                  <FlipCard key={`unassigned-${member.name}`} member={member} />
-                ))}
-              </div>
-            </div>
-          ) : null}
         </>
       ) : (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-5">
