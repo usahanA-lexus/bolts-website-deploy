@@ -1,37 +1,70 @@
 import React from "react";
-import boltsLandscape from "./bolts logo landscape.png";
+
+const cards = [
+  {
+    title: "Engineering",
+    body: "Design it, build it, break it, rebuild it. Real hardware on a real bench.",
+    tone: "paper",
+  },
+  {
+    title: "Programming",
+    body: "Write the code that makes the robot think, then test it until it stops surprising us.",
+    tone: "red",
+  },
+  {
+    title: "Teamwork",
+    body: "Mechanical, computer science, math, data science, and computer engineering students on one roster.",
+    tone: "ink",
+  },
+];
 
 export default function About() {
   return (
     <section
       id="about"
-      className="scroll-mt-24 m-3 rounded-2xl bg-boltsBlack px-3 py-8 text-center text-boltsWhite shadow-md sm:m-4 sm:px-4 sm:py-10"
+      className="section-pad scroll-mt-24 border-t-[3px] border-ink bg-paper py-12 md:py-[88px]"
     >
-      <header className="mx-auto mb-5 max-w-3xl">
-        <img
-          src={boltsLandscape}
-          alt="Bolts Robotics"
-          className="mx-auto h-auto w-full max-w-[180px] object-contain sm:max-w-[200px] md:max-w-[220px]"
-        />
-      </header>
-      <div className="mx-auto max-w-3xl space-y-4 text-left sm:text-center">
-        <p className="text-base font-light leading-relaxed">
-          Bolts is a brand new SDSU VEX U robotics team, which means we are currently in our
-          &ldquo;build everything from nothing&rdquo; era.
-        </p>
-        <p className="text-base font-light leading-relaxed">
-          We have not competed yet, and that is exactly the point. Right now, we are designing
-          systems, writing code, breaking things, fixing them, and learning faster than any
-          textbook could ever teach.
-        </p>
-        <p className="text-base font-light leading-relaxed">
-          This is not a casual club. It is for people who want to get their hands dirty with
-          engineering, push through failure, and show up ready to compete when the season hits.
-        </p>
-        <p className="text-base font-light leading-relaxed">
-          We are early, we are hungry, and we are building something that is going to last.
-        </p>
+      <div className="mb-8 flex flex-col gap-4 md:mb-12 md:gap-5">
+        <div className="sticker">01 / About</div>
+        <h2 className="headline misreg-red text-[clamp(48px,8vw,96px)]">
+          Not a casual club.
+        </h2>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-3 md:gap-10">
+        {cards.map((card) => {
+          const isRed = card.tone === "red";
+          const isInk = card.tone === "ink";
+          return (
+            <article
+              key={card.title}
+              className={`flex flex-col gap-3 border-[3px] border-ink p-5 md:gap-3.5 md:p-7 ${
+                isRed
+                  ? "bg-red text-white shadow-[8px_8px_0_var(--ink)]"
+                  : isInk
+                    ? "bg-ink text-paper shadow-[8px_8px_0_var(--red)]"
+                    : "bg-paper text-ink shadow-[8px_8px_0_var(--ink)]"
+              }`}
+            >
+              <div
+                className={`mono-label text-[12px] md:text-[13px] ${
+                  isRed
+                    ? "text-white"
+                    : isInk
+                      ? "text-red-on-ink"
+                      : "text-red-text"
+                }`}
+              >
+                {card.title}
+              </div>
+              <p className="m-0 text-[17px] leading-snug md:text-xl md:leading-relaxed">
+                {card.body}
+              </p>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
 }
+EOF

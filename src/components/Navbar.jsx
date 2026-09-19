@@ -1,98 +1,149 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useId, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from './logo2.png'
+import { BoltIcon } from "./Grain";
 
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Team", href: "/#team" },
-  { label: "About", href: "/#about" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Contact", href: "/#contact" },
+const navLinks = [
+  { label: "About", to: "/#about" },
+  { label: "Calendar", to: "/#calendar" },
+  { label: "Roster", to: "/#roster" },
+  { label: "Gallery", to: "/gallery" },
+  { label: "Whimsical", to: "/whimsical" },
 ];
 
+function resolveHash(hash) {
+  if (hash === "#team") return "#roster";
+  if (hash === "#contact") return "#join";
+  return hash;
+}
+
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const menuId = useId();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    setOpen(false);
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
-    if (location.hash) {
-      setTimeout(() => {
-        const element = document.querySelector(location.hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
+    const hash = resolveHash(location.hash);
+    if (!hash || location.pathname !== "/") return;
+    if (hash !== location.hash) {
+      navigate({ pathname: "/", hash }, { replace: true });
+      return;
     }
-  }, [location]);
+    const id = hash.slice(1);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location, navigate]);
 
-  const handleNavClick = (e, href) => {
-    e.preventDefault();
-    
-    if (href === "/") {
-      navigate("/");
-      window.scrollTo(0, 0);
-    } else if (href.startsWith("/#")) {
-      const hash = href.split("/#")[1];
-      navigate("/#" + hash);
-      setTimeout(() => {
-        const element = document.querySelector("#" + hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    } else {
-      navigate(href);
-      window.scrollTo(0, 0);
+  function go(to) {
+    setOpen(false);
+    if (to.startsWith("/#")) {
+      const hash = to.slice(1);
+      if (location.pathname === "/") {
+        navigate({ pathname: "/", hash });
+        const el = document.getElementById(hash.slice(1));
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        navigate({ pathname: "/", hash });
+      }
+      return;
     }
-  };
+    navigate(to);
+  }
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-white/10 transition-colors duration-300 ${
-        scrolled ? "bg-black/60 backdrop-blur-md" : "bg-black"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4 md:gap-8">
+    <header className="sticky top-0 z-40 border-b-[3px] border-ink bg-paper">
+      <div className="section-pad flex h-16 items-center justify-between md:h-[84px]">
         <Link
           to="/"
-          className="flex flex-shrink-0 items-center overflow-hidden rounded-lg bg-black p-0.5 ring-1 ring-white/10 transition-shadow hover:ring-white/20"
-          title="Bolts Robotics — Home"
+          className="flex items-center gap-3 text-ink no-underline"
+          onClick={() => setOpen(false)}
         >
-          <img
-            src={logo}
-            alt="Bolts Robotics Logo"
-            className="h-14 w-14 object-contain sm:h-16 sm:w-16"
-          />
+          <BoltIcon size={28} />
+          <span className="headline text-[30px] tracking-[0.04em] md:text-[34px]">
+            Bolts
+          </span>
         </Link>
-        <div className="flex flex-1 flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 md:justify-end">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={(e) => handleNavClick(e, item.href)}
-              className="text-white font-medium tracking-wide hover:text-red-400 transition-colors cursor-pointer"
+
+        <nav className="hidden items-center gap-9 md:flex" aria-label="Primary">
+          {navLinks.map((link) => (
+            <button
+              key={link.label}
+              type="button"
+              onClick={() => go(link.to)}
+              className="bg-transparent p-0 text-[15px] font-semibold text-ink"
             >
-              {item.label}
-            </a>
+              {link.label}
+            </button>
           ))}
-          <Link
-            to="/whimsical"
-            className="text-white font-medium tracking-wide transition-colors hover:text-red-400"
+          <button
+            type="button"
+            onClick={() => go("/#join")}
+            className="border-[3px] border-ink bg-red px-5 py-2.5 text-[15px] font-semibold text-white shadow-[4px_4px_0_var(--ink)]"
           >
-            Whimsical
-          </Link>
-        </div>
+            Join the team
+          </button>
+        </nav>
+
+        <button
+          type="button"
+          className="flex h-11 w-11 items-center justify-center bg-transparent text-ink md:hidden"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls={menuId}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="square"
+            aria-hidden="true"
+          >
+            {open ? (
+              <path d="M6 6l12 12M18 6L6 18" />
+            ) : (
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            )}
+          </svg>
+        </button>
       </div>
-    </nav>
+
+      {open ? (
+        <div
+          id={menuId}
+          className="border-t-[3px] border-ink bg-paper px-5 py-4 md:hidden"
+        >
+          <nav className="flex flex-col gap-2" aria-label="Mobile">
+            {navLinks.map((link) => (
+              <button
+                key={link.label}
+                type="button"
+                onClick={() => go(link.to)}
+                className="bg-transparent px-2 py-3 text-left text-base font-semibold text-ink"
+              >
+                {link.label}
+              </button>
+            ))}
+            <button
+              type="button"
+              onClick={() => go("/#join")}
+              className="mt-2 border-[3px] border-ink bg-red px-5 py-3 text-base font-semibold text-white shadow-[4px_4px_0_var(--ink)]"
+            >
+              Join the team
+            </button>
+          </nav>
+        </div>
+      ) : null}
+    </header>
   );
 }
+EOF
