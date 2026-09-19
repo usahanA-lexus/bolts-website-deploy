@@ -186,7 +186,22 @@ function TeamBlock({ teamNumber, members }) {
 export default function Roster() {
   const members = roster.members || [];
   const hierarchyReady = Boolean(site.hierarchyReady);
-  const execs = members.filter((m) => m.execTitle);
+  const execOrder = [
+    "President",
+    "VP",
+    "Treasurer",
+    "Secretary",
+    "Digital Media",
+    "Social Media",
+    "Student Advisor",
+    "Advisor",
+  ];
+  const execs = members
+    .filter((m) => m.execTitle)
+    .sort(
+      (a, b) =>
+        execOrder.indexOf(a.execTitle) - execOrder.indexOf(b.execTitle)
+    );
   const team1 = members.filter((m) => m.team === 1);
   const team2 = members.filter((m) => m.team === 2);
 

@@ -65,8 +65,8 @@
       "major": "Computer Science",
       "photo": "Nathan.jpg",
       "team": null,
-      "execTitle": "Founder",
-      "founder": true,
+      "execTitle": "Student Advisor",
+      "founder": false,
       "lead": false,
       "flipBack": {}
     },
@@ -85,7 +85,7 @@
       "major": "Computer Science",
       "photo": "Alexus.jpg",
       "team": null,
-      "execTitle": "Media Manager",
+      "execTitle": "Digital Media",
       "founder": false,
       "lead": false,
       "flipBack": {}
@@ -105,7 +105,7 @@
       "major": "Mechanical Engineering",
       "photo": "Chris.jpg",
       "team": 2,
-      "execTitle": "Vice President",
+      "execTitle": "VP",
       "founder": false,
       "lead": true,
       "flipBack": {}
