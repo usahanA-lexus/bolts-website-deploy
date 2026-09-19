@@ -66,7 +66,7 @@
     background-size: 10px 10px;
   }
 
-  /* Pale red wash over grayscale photos */
+  /* Soft black-and-white portraits (no color wash) */
   .duotone {
     position: relative;
     background: var(--paper);
@@ -78,15 +78,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(1) contrast(1.04);
-  }
-
-  .duotone::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(214, 43, 32, 0.22);
-    pointer-events: none;
+    filter: grayscale(1) contrast(0.92) brightness(1.04);
   }
 
   .sticker {

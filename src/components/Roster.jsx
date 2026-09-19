@@ -55,17 +55,17 @@ function FlipCard({ member }) {
       onKeyDown={onKeyDown}
     >
       <div
-        className={`flip-inner relative min-h-[240px] ${flipped ? "is-flipped" : ""}`}
+        className={`flip-inner relative min-h-[220px] ${flipped ? "is-flipped" : ""}`}
       >
-        <div className="flip-face flip-front flex h-full min-h-[240px] flex-col border-[3px] border-ink bg-paper shadow-[5px_5px_0_var(--ink)]">
-          <div className="duotone h-[140px] border-b-[3px] border-ink">
+        <div className="flip-face flip-front flex h-full min-h-[220px] flex-col border-[3px] border-ink bg-paper text-ink shadow-[5px_5px_0_var(--ink)]">
+          <div className="duotone h-[120px] border-b-[3px] border-ink">
             {src ? (
               <img
                 src={src}
                 alt=""
                 width={400}
                 height={400}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover object-top"
               />
             ) : (
               <div className="flex h-full items-center justify-center bg-ink">
@@ -86,9 +86,9 @@ function FlipCard({ member }) {
           </div>
         </div>
 
-        <div className="flip-face flip-back relative flex min-h-[240px] flex-col justify-between overflow-hidden border-[3px] border-ink bg-ink p-4 text-paper shadow-[5px_5px_0_var(--red)]">
+        <div className="flip-face flip-back relative flex min-h-[220px] flex-col justify-between overflow-hidden border-[3px] border-ink bg-ink p-4 text-paper shadow-[5px_5px_0_var(--red)]">
           <div
-            className="halftone-red pointer-events-none absolute inset-0 opacity-40"
+            className="halftone-ink pointer-events-none absolute inset-0 opacity-30"
             aria-hidden="true"
           />
           <div className="relative z-[1] flex flex-col gap-2">
@@ -101,7 +101,11 @@ function FlipCard({ member }) {
               <p className="mono-label m-0 text-[11px] text-muted-ink">
                 Team {member.team}
               </p>
-            ) : null}
+            ) : (
+              <p className="mono-label m-0 text-[11px] text-muted-ink">
+                {member.execTitle ? "Exec board" : "Roster"}
+              </p>
+            )}
           </div>
           <div className="relative z-[1]">
             <Badges member={member} />
@@ -109,6 +113,43 @@ function FlipCard({ member }) {
         </div>
       </div>
     </button>
+  );
+}
+
+function ExecCard({ person }) {
+  const src = teamPhotos[person.photo];
+
+  return (
+    <article className="flex flex-col overflow-hidden border-[3px] border-ink bg-ink text-paper shadow-[6px_6px_0_var(--red)]">
+      <div className="duotone h-[120px] border-b-[3px] border-paper/20 bg-paper">
+        {src ? (
+          <img
+            src={src}
+            alt={`${person.name}, ${person.execTitle}`}
+            width={400}
+            height={400}
+            className="h-full w-full object-cover object-top"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center bg-ink">
+            <span className="headline text-5xl text-paper">
+              {person.name.slice(0, 1)}
+            </span>
+          </div>
+        )}
+      </div>
+      <div className="flex flex-col gap-1.5 p-3">
+        <div className="mono-label text-[11px] text-red-on-ink md:text-[12px]">
+          {person.execTitle}
+        </div>
+        <div className="text-[18px] font-semibold md:text-[20px]">
+          {person.name}
+        </div>
+        <div className="mono-label text-[11px] text-muted-ink">
+          {person.team ? `Also Team ${person.team}` : "Exec board"}
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -126,7 +167,7 @@ function TeamBlock({ teamNumber, members }) {
         <div className="headline self-start -rotate-1 border-[3px] border-ink bg-red px-4 py-1.5 text-[clamp(28px,4vw,40px)] text-white shadow-[5px_5px_0_var(--ink)]">
           {title}
         </div>
-        <div className="mono-label text-[13px] font-medium text-red-text">
+        <div className="mono-label text-[13px] font-medium text-red-text md:text-red-text">
           {meets}
         </div>
         {blurb ? (
@@ -150,22 +191,24 @@ export default function Roster() {
   const execs = members.filter((m) => m.execTitle);
   const team1 = members.filter((m) => m.team === 1);
   const team2 = members.filter((m) => m.team === 2);
+  // Anyone without a build team (includes exec-only). Photos may also appear above.
+  const unassigned = members.filter((m) => m.team == null);
 
   return (
     <section
       id="roster"
-      className="section-pad scroll-mt-24 border-t-[3px] border-ink bg-ink py-12 text-paper md:bg-paper md:py-20 md:text-ink"
+      className="section-pad relative z-10 scroll-mt-24 overflow-hidden border-t-[3px] border-ink bg-paper py-12 text-ink md:py-20"
     >
       <div className="mb-10 flex flex-col gap-5 md:mb-14 md:flex-row md:items-end md:justify-between md:gap-12">
         <div className="flex flex-col gap-4 md:gap-5">
           <div className="sticker self-start">03 / Roster</div>
-          <h2 className="headline misreg-red text-[clamp(48px,8vw,96px)] text-paper md:text-ink">
+          <h2 className="headline misreg-red text-[clamp(48px,8vw,96px)]">
             The builders.
           </h2>
         </div>
-        <p className="m-0 max-w-[400px] text-base leading-relaxed text-muted-ink md:text-lg md:text-ink">
+        <p className="m-0 max-w-[400px] text-base leading-relaxed text-ink md:text-lg">
           {hierarchyReady
-            ? "One exec board, two build teams, and founders flagged wherever they show up."
+            ? "Exec board and both build teams. People can show up more than once when roles overlap."
             : "The people building Bolts from scratch."}
         </p>
       </div>
@@ -173,25 +216,15 @@ export default function Roster() {
       {hierarchyReady ? (
         <>
           <div className="mb-12 flex flex-col gap-5 md:mb-14">
-            <div className="mono-label text-[13px] text-muted-ink md:text-muted-paper">
+            <div className="mono-label text-[13px] text-muted-paper">
               Leadership / Exec board
             </div>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
               {execs.map((person) => (
-                <div
-                  key={person.execTitle}
-                  className="flex flex-col gap-2 border-[3px] border-ink bg-ink p-4 text-paper shadow-[6px_6px_0_var(--red)]"
-                >
-                  <div className="mono-label text-[12px] text-red-on-ink">
-                    {person.execTitle}
-                  </div>
-                  <div className="text-[20px] font-semibold md:text-[22px]">
-                    {person.name}
-                  </div>
-                  <div className="mono-label text-[11px] text-muted-ink">
-                    {person.team ? `Team ${person.team}` : "Exec"}
-                  </div>
-                </div>
+                <ExecCard
+                  key={`${person.execTitle}-${person.name}`}
+                  person={person}
+                />
               ))}
             </div>
           </div>
@@ -200,6 +233,26 @@ export default function Roster() {
             <TeamBlock teamNumber={1} members={team1} />
             <TeamBlock teamNumber={2} members={team2} />
           </div>
+
+          {unassigned.length > 0 ? (
+            <div className="mt-14 flex flex-col gap-5">
+              <div className="flex flex-col gap-2">
+                <div className="mono-label text-[13px] text-muted-paper">
+                  Also on the roster
+                </div>
+                <p className="m-0 max-w-xl text-sm text-muted-paper">
+                  Builders without a team assignment yet, plus exec members who
+                  are not on Team 1 or Team 2. Photos may repeat from the exec
+                  board above.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-5">
+                {unassigned.map((member) => (
+                  <FlipCard key={`unassigned-${member.name}`} member={member} />
+                ))}
+              </div>
+            </div>
+          ) : null}
         </>
       ) : (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-5">
