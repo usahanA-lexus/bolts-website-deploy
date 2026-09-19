@@ -16,8 +16,9 @@
       "day": "Wednesday",
       "time": "4:00 PM",
       "room": "GMCS 538",
-      "shortLabel": "T1 4 PM",
-      "kind": "team1"
+      "shortLabel": "T1",
+      "kind": "team1",
+      "dayOnly": true
     },
     {
       "id": "team2",
@@ -25,8 +26,9 @@
       "day": "Monday",
       "time": "11:00 AM",
       "room": "GMCS 538",
-      "shortLabel": "T2 11 AM",
-      "kind": "team2"
+      "shortLabel": "T2",
+      "kind": "team2",
+      "dayOnly": true
     }
   ],
   "oneOffEvents": [],

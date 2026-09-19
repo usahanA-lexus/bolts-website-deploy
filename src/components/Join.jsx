@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 const rows = [
   {
     label: "Meets",
-    value: "GBMs Fridays at 11:30 AM, plus your team each week.",
+    value:
+      "GBMs Fridays at 11:30 AM, plus Team 1 on Wednesdays and Team 2 on Mondays.",
   },
   {
     label: "Where",
-    value: "GMCS 549 (GBMs), GMCS 538 (teams).",
+    value: "GBMs in GMCS 549. Team meeting rooms are shared in club channels.",
   },
   {
     label: "Commitment",

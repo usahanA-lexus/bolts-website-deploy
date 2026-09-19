@@ -119,14 +119,10 @@ export default function Calendar() {
               {Array.from({ length: cells.length / 7 }, (_, week) => (
                 <tr key={week}>
                   {cells.slice(week * 7, week * 7 + 7).map((cell) => {
-                    const label =
-                      cell.kind === "gbm"
-                        ? "GBM 11:30"
-                        : cell.kind === "team1"
-                          ? "T1 4 PM"
-                          : cell.kind === "team2"
-                            ? "T2 11 AM"
-                            : null;
+                    const kindEvent = schedule.recurring.find(
+                      (event) => event.kind === cell.kind
+                    );
+                    const label = kindEvent ? kindEvent.shortLabel : null;
                     let cellClass =
                       "box-border min-h-[64px] p-2 align-top border-2 md:min-h-[84px] ";
                     if (cell.dim) {
@@ -186,9 +182,11 @@ export default function Calendar() {
                   {event.title}
                 </div>
                 <div className="headline text-[28px] leading-tight md:text-[34px]">
-                  {event.day}s, {event.time}
+                  {event.dayOnly ? `${event.day}s` : `${event.day}s, ${event.time}`}
                 </div>
-                <div className="text-[15px]">{event.room}</div>
+                {!event.dayOnly && event.room ? (
+                  <div className="text-[15px]">{event.room}</div>
+                ) : null}
               </div>
             ))}
           </div>
