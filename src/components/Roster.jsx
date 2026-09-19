@@ -246,18 +246,13 @@ export default function Roster() {
       ref={sectionRef}
       className="section-pad relative z-10 scroll-mt-24 overflow-hidden border-t-[3px] border-ink bg-paper py-12 text-ink md:py-20"
     >
-      <div className="mb-10 flex flex-col gap-5 md:mb-14 md:flex-row md:items-end md:justify-between md:gap-12">
+      <div className="mb-10 flex flex-col gap-5 md:mb-14">
         <div className="flex flex-col gap-4 md:gap-5">
           <div className="sticker self-start">03 / Roster</div>
           <h2 className="headline misreg-red text-[clamp(48px,8vw,96px)]">
             The builders.
           </h2>
         </div>
-        <p className="m-0 max-w-[400px] text-base leading-relaxed text-ink md:text-lg">
-          {hierarchyReady
-            ? "Exec board and both build teams. People can show up more than once when roles overlap."
-            : "The people building Bolts from scratch."}
-        </p>
       </div>
 
       {hierarchyReady ? (
