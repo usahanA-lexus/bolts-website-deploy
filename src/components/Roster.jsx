@@ -20,98 +20,42 @@ function Badges({ member }) {
   );
 }
 
-function FlipCard({ member, isSpinning }) {
-  const [flipped, setFlipped] = useState(false);
+function MemberCard({ member, isSpinning }) {
   const src = teamPhotos[member.photo];
-  const backMajor = member.flipBack?.major || member.major || "Builder";
-  const backRole =
-    member.flipBack?.role ||
-    member.execTitle ||
-    (member.lead ? "Team lead" : "Team member");
-
-  function toggle() {
-    setFlipped((v) => !v);
-  }
-
-  function onKeyDown(event) {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      toggle();
-    }
-  }
 
   return (
-    <button
-      type="button"
-      className="flip-scene group w-full border-0 bg-transparent p-0 text-left"
-      aria-pressed={flipped}
-      aria-label={`${member.name}, flip card for details`}
-      onClick={toggle}
-      onKeyDown={onKeyDown}
-    >
+    <article className="flex flex-col overflow-hidden border-[3px] border-ink bg-paper text-ink shadow-[5px_5px_0_var(--ink)]">
       <div
-        className={`flip-inner relative min-h-[260px] ${flipped ? "is-flipped" : ""}`}
+        className={`duotone aspect-square w-full overflow-hidden border-b-[3px] border-ink ${
+          isSpinning ? "animate-spin-decelerate" : ""
+        }`}
       >
-        <div className="flip-face flip-front flex h-full min-h-[260px] flex-col border-[3px] border-ink bg-paper text-ink shadow-[5px_5px_0_var(--ink)]">
-          <div
-            className={`duotone aspect-square w-full overflow-hidden border-b-[3px] border-ink ${
-              isSpinning ? "animate-spin-decelerate" : ""
-            }`}
-          >
-            {src ? (
-              <img
-                src={src}
-                alt=""
-                width={400}
-                height={400}
-                className="h-full w-full object-cover object-[center_20%]"
-              />
-            ) : (
-              <div className="flex h-full items-center justify-center bg-ink">
-                <span className="headline text-5xl text-paper">
-                  {member.name.slice(0, 1)}
-                </span>
-              </div>
-            )}
-          </div>
-          <div className="flex flex-col gap-1.5 p-3">
-            <div className="text-[17px] font-semibold">{member.name}</div>
-            {member.major ? (
-              <div className="mono-label text-[11px] text-muted-paper">
-                {member.major}
-              </div>
-            ) : null}
-            <Badges member={member} />
-          </div>
-        </div>
-
-        <div className="flip-face flip-back relative flex min-h-[260px] flex-col justify-between overflow-hidden border-[3px] border-ink bg-ink p-4 text-paper shadow-[5px_5px_0_var(--red)]">
-          <div
-            className="halftone-ink pointer-events-none absolute inset-0 opacity-30"
-            aria-hidden="true"
+        {src ? (
+          <img
+            src={src}
+            alt={member.name}
+            width={400}
+            height={400}
+            className="h-full w-full object-cover object-[center_20%]"
           />
-          <div className="relative z-[1] flex flex-col gap-2">
-            <div className="headline text-3xl">{member.name}</div>
-            <div className="mono-label text-[11px] text-red-on-ink">
-              {backRole}
-            </div>
-            <p className="m-0 text-sm leading-relaxed">{backMajor}</p>
-            {member.team ? (
-              <p className="mono-label m-0 text-[11px] text-muted-ink">
-                Team {member.team}
-              </p>
-            ) : (
-              <p className="mono-label m-0 text-[11px] text-muted-ink">
-                {member.execTitle ? "Exec board" : "Roster"}
-              </p>
-            )}
+        ) : (
+          <div className="flex h-full items-center justify-center bg-ink">
+            <span className="headline text-5xl text-paper">
+              {member.name.slice(0, 1)}
+            </span>
           </div>
-          <div className="relative z-[1]">
-            <Badges member={member} />
-          </div>
-        </div>
+        )}
       </div>
-    </button>
+      <div className="flex flex-col gap-1.5 p-3">
+        <div className="text-[17px] font-semibold">{member.name}</div>
+        {member.major ? (
+          <div className="mono-label text-[11px] text-muted-paper">
+            {member.major}
+          </div>
+        ) : null}
+        <Badges member={member} />
+      </div>
+    </article>
   );
 }
 
@@ -171,7 +115,7 @@ function TeamBlock({ teamNumber, members, isSpinning }) {
       </div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5">
         {members.map((member) => (
-          <FlipCard
+          <MemberCard
             key={`${teamNumber}-${member.name}`}
             member={member}
             isSpinning={isSpinning}
@@ -288,7 +232,7 @@ export default function Roster() {
       ) : (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-5">
           {members.map((member) => (
-            <FlipCard
+            <MemberCard
               key={member.name}
               member={member}
               isSpinning={isSpinning}
