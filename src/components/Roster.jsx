@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import roster from "../data/roster.json";
 import site from "../data/site.json";
 import { teamPhotos } from "../data/photos";
@@ -25,7 +25,7 @@ function Badges({ member }) {
   );
 }
 
-function FlipCard({ member }) {
+function FlipCard({ member, isSpinning }) {
   const [flipped, setFlipped] = useState(false);
   const src = teamPhotos[member.photo];
   const backMajor = member.flipBack?.major || member.major || "Builder";
@@ -58,7 +58,11 @@ function FlipCard({ member }) {
         className={`flip-inner relative min-h-[260px] ${flipped ? "is-flipped" : ""}`}
       >
         <div className="flip-face flip-front flex h-full min-h-[260px] flex-col border-[3px] border-ink bg-paper text-ink shadow-[5px_5px_0_var(--ink)]">
-          <div className="duotone aspect-square w-full border-b-[3px] border-ink">
+          <div
+            className={`duotone aspect-square w-full overflow-hidden border-b-[3px] border-ink ${
+              isSpinning ? "animate-spin-decelerate" : ""
+            }`}
+          >
             {src ? (
               <img
                 src={src}
@@ -116,12 +120,16 @@ function FlipCard({ member }) {
   );
 }
 
-function ExecCard({ person }) {
+function ExecCard({ person, isSpinning }) {
   const src = teamPhotos[person.photo];
 
   return (
     <article className="flex flex-col overflow-hidden border-[3px] border-ink bg-ink text-paper shadow-[6px_6px_0_var(--red)]">
-      <div className="duotone aspect-square w-full border-b-[3px] border-ink bg-paper">
+      <div
+        className={`duotone aspect-square w-full overflow-hidden border-b-[3px] border-ink bg-paper ${
+          isSpinning ? "animate-spin-decelerate" : ""
+        }`}
+      >
         {src ? (
           <img
             src={src}
@@ -150,7 +158,7 @@ function ExecCard({ person }) {
   );
 }
 
-function TeamBlock({ teamNumber, members }) {
+function TeamBlock({ teamNumber, members, isSpinning }) {
   const title = site.teamNames?.[String(teamNumber)] || `Team ${teamNumber}`;
   const blurb = site.teamBlurbs?.[String(teamNumber)] || "";
 
@@ -168,7 +176,11 @@ function TeamBlock({ teamNumber, members }) {
       </div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5">
         {members.map((member) => (
-          <FlipCard key={`${teamNumber}-${member.name}`} member={member} />
+          <FlipCard
+            key={`${teamNumber}-${member.name}`}
+            member={member}
+            isSpinning={isSpinning}
+          />
         ))}
       </div>
     </div>
@@ -176,6 +188,9 @@ function TeamBlock({ teamNumber, members }) {
 }
 
 export default function Roster() {
+  const [isSpinning, setIsSpinning] = useState(false);
+  const sectionRef = useRef(null);
+  const timeoutRef = useRef(null);
   const members = roster.members || [];
   const hierarchyReady = Boolean(site.hierarchyReady);
   const execOrder = [
@@ -197,9 +212,39 @@ export default function Roster() {
   const team1 = members.filter((m) => m.team === 1);
   const team2 = members.filter((m) => m.team === 2);
 
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+    if (!sectionEl) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reduced.matches) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsSpinning(true);
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+            timeoutRef.current = setTimeout(() => {
+              setIsSpinning(false);
+            }, 1800);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(sectionEl);
+    return () => {
+      observer.disconnect();
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
   return (
     <section
       id="roster"
+      ref={sectionRef}
       className="section-pad relative z-10 scroll-mt-24 overflow-hidden border-t-[3px] border-ink bg-paper py-12 text-ink md:py-20"
     >
       <div className="mb-10 flex flex-col gap-5 md:mb-14 md:flex-row md:items-end md:justify-between md:gap-12">
@@ -227,20 +272,33 @@ export default function Roster() {
                 <ExecCard
                   key={`${person.execTitle}-${person.name}`}
                   person={person}
+                  isSpinning={isSpinning}
                 />
               ))}
             </div>
           </div>
 
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <TeamBlock teamNumber={1} members={team1} />
-            <TeamBlock teamNumber={2} members={team2} />
+            <TeamBlock
+              teamNumber={1}
+              members={team1}
+              isSpinning={isSpinning}
+            />
+            <TeamBlock
+              teamNumber={2}
+              members={team2}
+              isSpinning={isSpinning}
+            />
           </div>
         </>
       ) : (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-5">
           {members.map((member) => (
-            <FlipCard key={member.name} member={member} />
+            <FlipCard
+              key={member.name}
+              member={member}
+              isSpinning={isSpinning}
+            />
           ))}
         </div>
       )}

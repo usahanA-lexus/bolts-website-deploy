@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Grain from "./Grain";
@@ -22,10 +22,43 @@ const batCrew = [
 ];
 
 export default function WhimsicalPage() {
+  const [isSpinning, setIsSpinning] = useState(false);
+  const sectionRef = useRef(null);
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+    if (!sectionEl) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reduced.matches) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsSpinning(true);
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+            timeoutRef.current = setTimeout(() => {
+              setIsSpinning(false);
+            }, 1800);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(sectionEl);
+    return () => {
+      observer.disconnect();
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-paper">
       <Navbar />
-      <main className="section-pad py-12 md:py-16">
+      <main className="section-pad py-12 md:py-16" ref={sectionRef}>
         <div className="mb-10 flex flex-col items-start gap-4">
           <div className="sticker">Whimsical</div>
           <h1 className="headline misreg-red text-[clamp(48px,9vw,96px)]">
@@ -44,7 +77,11 @@ export default function WhimsicalPage() {
                 key={member.name}
                 className="m-0 flex flex-col items-center gap-3 border-[3px] border-ink bg-paper p-4 shadow-[5px_5px_0_var(--ink)]"
               >
-                <div className="duotone h-24 w-24 overflow-hidden rounded-full border-[3px] border-ink">
+                <div
+                  className={`duotone h-24 w-24 overflow-hidden rounded-full border-[3px] border-ink ${
+                    isSpinning ? "animate-spin-decelerate" : ""
+                  }`}
+                >
                   <img
                     src={src}
                     alt={member.name}

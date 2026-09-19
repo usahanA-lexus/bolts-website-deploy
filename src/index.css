@@ -147,9 +147,26 @@
     transform: rotateY(180deg);
   }
 
+  @keyframes spin-decelerate {
+    from {
+      transform: rotate(90deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-decelerate {
+    animation: spin-decelerate 1.8s cubic-bezier(0.45, 1, 0.36, 1) forwards;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+
+    .animate-spin-decelerate {
+      animation: none;
     }
 
     .flip-inner {
