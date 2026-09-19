@@ -153,9 +153,6 @@ function ExecCard({ person }) {
         <div className="text-[18px] font-semibold md:text-[20px]">
           {person.name}
         </div>
-        <div className="mono-label text-[11px] text-muted-ink">
-          {person.team ? `Also Team ${person.team}` : "Exec board"}
-        </div>
       </div>
     </article>
   );
@@ -164,19 +161,12 @@ function ExecCard({ person }) {
 function TeamBlock({ teamNumber, members }) {
   const title = site.teamNames?.[String(teamNumber)] || `Team ${teamNumber}`;
   const blurb = site.teamBlurbs?.[String(teamNumber)] || "";
-  const meets =
-    teamNumber === 1
-      ? "Meets Wednesdays, 4:00 PM, GMCS 538"
-      : "Meets Mondays, 11:00 AM, GMCS 538";
 
   return (
     <div className="flex flex-col gap-7">
       <div className="flex flex-col gap-2.5">
         <div className="headline self-start -rotate-1 border-[3px] border-ink bg-red px-4 py-1.5 text-[clamp(28px,4vw,40px)] text-white shadow-[5px_5px_0_var(--ink)]">
           {title}
-        </div>
-        <div className="mono-label text-[13px] font-medium text-red-text md:text-red-text">
-          {meets}
         </div>
         {blurb ? (
           <div className="font-mono text-[12px] tracking-wide text-muted-paper">
