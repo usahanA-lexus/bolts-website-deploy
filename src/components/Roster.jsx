@@ -11,11 +11,6 @@ function Badges({ member }) {
           Team lead
         </span>
       ) : null}
-      {member.execTitle ? (
-        <span className="mono-label border-2 border-ink bg-ink px-1.5 py-0.5 text-[10px] text-paper">
-          Exec
-        </span>
-      ) : null}
       {member.founder ? (
         <span className="mono-label border-2 border-ink bg-paper px-1.5 py-0.5 text-[10px] text-ink">
           Founder
@@ -209,8 +204,12 @@ export default function Roster() {
       (a, b) =>
         execOrder.indexOf(a.execTitle) - execOrder.indexOf(b.execTitle)
     );
-  const team1 = members.filter((m) => m.team === 1);
-  const team2 = members.filter((m) => m.team === 2);
+  const team1 = members
+    .filter((m) => m.team === 1)
+    .sort((a, b) => Number(b.lead) - Number(a.lead));
+  const team2 = members
+    .filter((m) => m.team === 2)
+    .sort((a, b) => Number(b.lead) - Number(a.lead));
 
   useEffect(() => {
     const sectionEl = sectionRef.current;
