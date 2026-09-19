@@ -3,17 +3,17 @@ import React from "react";
 const cards = [
   {
     title: "Engineering",
-    body: "Design it, build it, break it, rebuild it. Real hardware on a real bench.",
+    body: "We design it, build it, break it, and rebuild it. Real hardware on a real bench.",
     tone: "paper",
   },
   {
     title: "Programming",
-    body: "Write the code that makes the robot think, then test it until it stops surprising us.",
+    body: "We write the code that makes the robot think, then test it until it stops surprising us.",
     tone: "red",
   },
   {
     title: "Teamwork",
-    body: "Mechanical, computer science, math, data science, and computer engineering students on one roster.",
+    body: "Mechanical, computer science, math, data science, and computer engineering students on one roster, building together.",
     tone: "ink",
   },
 ];

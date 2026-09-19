@@ -20,8 +20,8 @@ export default function Hero() {
       <div className="grid items-center gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-10">
         <div className="flex flex-col gap-6">
           <p className="max-w-[460px] text-base leading-relaxed text-ink md:text-xl md:leading-relaxed">
-            Bolts is a brand new SDSU VEX U team. We are building the robot, the
-            code, and the culture from scratch.
+            Bolts Robotics is the SDSU VEX U team. We are building the robot,
+            the code, and the culture from scratch at San Diego State.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
