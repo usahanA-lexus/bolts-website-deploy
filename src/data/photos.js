@@ -81,65 +81,77 @@ export const teamPhotos = {
 
 export const galleryPhotos = [
   {
-    src: photo20260130_103231,
-    caption: "Jan 30: workshop session",
-    alt: "Bolts team working in the workshop on January 30, 2026",
-  },
-  {
     src: photo20260130_103635,
     caption: "Jan 30: build session",
     alt: "Build session in the shop on January 30, 2026",
+    position: "center",
   },
   {
     src: photo20260130_113150,
     caption: "Jan 30: team session",
     alt: "Team session in the lab on January 30, 2026",
+    position: "center",
   },
   {
     src: photo20260313_114555,
     caption: "Mar 13: lab day",
     alt: "Lab work on March 13, 2026",
+    position: "center",
   },
   {
     src: photo20260417_110950,
     caption: "Apr 17: workshop",
     alt: "Workshop session on April 17, 2026",
+    position: "center",
+  },
+  {
+    src: photo20260130_103231,
+    caption: "Jan 30: workshop session",
+    alt: "Bolts team working in the workshop on January 30, 2026",
+    position: "bottom",
   },
   {
     src: teambuilding1,
     caption: "Build log: robot chassis",
     alt: "Team building the robot chassis",
+    position: "center",
   },
   {
     src: teambuilding2,
     caption: "Build log: team workshop",
     alt: "Team workshop collaboration",
+    position: "center",
   },
   {
     src: teambuilding3,
     caption: "Build log: prototype zone",
     alt: "Prototype work on the bench",
+    position: "bottom",
   },
   {
     src: teambuilding4,
     caption: "Build log: collaboration",
     alt: "Collaboration in the shop",
+    position: "center",
   },
   {
     src: teambuilding5,
     caption: "Build log: design review",
     alt: "Design review session",
+    position: "center",
   },
   {
     src: teambuilding6,
     caption: "Build log: competition prep",
     alt: "Competition preparation",
+    position: "center",
   },
   {
     src: teambuilding7,
     caption: "Build log: team celebration",
     alt: "Team celebration after a session",
+    position: "center",
   },
 ];
 
-export const heroWorkshop = photo20260130_103231;
+export const heroWorkshop = photo20260130_103635;
