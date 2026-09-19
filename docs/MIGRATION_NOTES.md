@@ -55,4 +55,3 @@ Fonts: Big Shoulders Display, Instrument Sans, JetBrains Mono (Google Fonts, `di
 ## Legacy
 
 Unused pre-riso components moved to `legacy/` (`TeamGrid.jsx`, `GalleryCarousel.jsx`, `Contact.jsx`). Full pre-riso snapshot: tag `pre-riso-backup-2026-09-18`, branch `backup/pre-riso-2026-09-18`.
-EOF

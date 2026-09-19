@@ -30,4 +30,3 @@ export default function ContactForm() {
     </div>
   );
 }
-EOF

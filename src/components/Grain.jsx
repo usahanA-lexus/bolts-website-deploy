@@ -41,4 +41,3 @@ export function BoltIcon({ size = 30, className = "" }) {
     </svg>
   );
 }
-EOF

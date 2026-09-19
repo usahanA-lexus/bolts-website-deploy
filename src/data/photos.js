@@ -137,4 +137,3 @@ export const galleryPhotos = [
 ];
 
 export const heroWorkshop = photo20260130_103231;
-EOF

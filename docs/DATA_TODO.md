@@ -36,4 +36,3 @@ Handwritten team/exec notes were applied where names matched existing photos. St
 1. Note the current Vercel production deployment URL (for Instant Rollback). See `docs/ROLLBACK.md`.
 2. Set `hierarchyReady` in `src/data/site.json` only when you are happy with exec/team data (currently `true` using your handwritten assignments for people who have photos).
 3. Confirm `og:image` at `/og.png` looks right after deploy.
-EOF
