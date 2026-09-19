@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { BoltIcon } from "./Grain";
+import logo from "./logo2.png";
 
 const navLinks = [
   { label: "About", to: "/#about" },
@@ -61,13 +61,17 @@ export default function Navbar() {
       <div className="section-pad flex h-16 items-center justify-between md:h-[84px]">
         <Link
           to="/"
-          className="flex items-center gap-3 text-ink no-underline"
+          className="flex flex-shrink-0 items-center overflow-hidden rounded-sm border-[2px] border-ink bg-ink p-0.5 no-underline"
+          title="Bolts Robotics Home"
           onClick={() => setOpen(false)}
         >
-          <BoltIcon size={28} />
-          <span className="headline text-[30px] tracking-[0.04em] md:text-[34px]">
-            Bolts
-          </span>
+          <img
+            src={logo}
+            alt="Bolts Robotics logo"
+            width={64}
+            height={64}
+            className="h-12 w-12 object-contain sm:h-14 sm:w-14"
+          />
         </Link>
 
         <nav className="hidden items-center gap-9 md:flex" aria-label="Primary">

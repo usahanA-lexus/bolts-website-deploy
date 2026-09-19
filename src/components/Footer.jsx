@@ -1,16 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BoltIcon } from "./Grain";
+import logo from "./logo2.png";
 
 export default function Footer() {
   return (
     <footer className="section-pad flex min-h-[248px] flex-col justify-between bg-ink py-10 text-paper md:py-16">
       <div className="flex flex-col gap-10 md:flex-row md:justify-between md:gap-16">
         <div className="flex flex-col gap-3.5">
-          <div className="flex items-center gap-3">
-            <BoltIcon size={30} />
-            <span className="headline text-[34px] tracking-[0.04em]">Bolts</span>
-          </div>
+          <Link to="/" className="inline-flex w-fit items-center no-underline">
+            <img
+              src={logo}
+              alt="Bolts Robotics logo"
+              width={64}
+              height={64}
+              className="h-14 w-14 object-contain"
+            />
+          </Link>
           <p className="m-0 text-base text-muted-ink">
             SDSU VEX U robotics team. San Diego, California.
           </p>

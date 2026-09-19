@@ -6,14 +6,16 @@ function GalleryTile({ photo, large = false, inkShadow = true }) {
   return (
     <figure
       className={`relative m-0 overflow-hidden border-[3px] border-ink ${
-        large ? "min-h-[220px] md:min-h-0 md:row-span-2 md:col-span-2" : "min-h-[140px]"
-      } ${inkShadow ? "shadow-[8px_8px_0_var(--ink)]" : "shadow-[6px_6px_0_var(--red)]"}`}
+        large
+          ? "min-h-[150px] md:min-h-0 md:row-span-2 md:col-span-2"
+          : "min-h-[100px] md:min-h-[110px]"
+      } ${inkShadow ? "shadow-[6px_6px_0_var(--ink)]" : "shadow-[5px_5px_0_var(--red)]"}`}
     >
       <div className="duotone absolute inset-0">
-        <img src={photo.src} alt={photo.alt} width={800} height={600} />
+        <img src={photo.src} alt={photo.alt} width={640} height={420} />
       </div>
-      <figcaption className="absolute bottom-3 left-3 z-[1]">
-        <span className="inline-block border-2 border-ink bg-paper px-2 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-ink md:text-[12px]">
+      <figcaption className="absolute bottom-2 left-2 z-[1] md:bottom-3 md:left-3">
+        <span className="inline-block border-2 border-ink bg-paper px-2 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-ink md:text-[11px]">
           {photo.caption}
         </span>
       </figcaption>
@@ -44,7 +46,7 @@ export default function GallerySection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:grid-rows-2 md:gap-5">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:grid-rows-[repeat(2,minmax(0,140px))] md:gap-4">
         <GalleryTile photo={tiles[0]} large />
         <GalleryTile photo={tiles[1]} />
         <GalleryTile photo={tiles[2]} inkShadow={false} />

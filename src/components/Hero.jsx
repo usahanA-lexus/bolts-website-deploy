@@ -36,17 +36,17 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative order-1 h-[190px] md:order-2 md:h-[290px] md:mr-4">
+        <div className="relative order-1 mx-auto h-[140px] w-full max-w-md md:order-2 md:mx-0 md:mr-4 md:h-[200px] md:max-w-lg">
           <div
-            className="halftone-red absolute -bottom-2.5 -right-2.5 left-2.5 top-2.5 border-[3px] border-red md:-bottom-4 md:-right-4 md:left-4 md:top-4"
+            className="halftone-red absolute -bottom-2 -right-2 left-2 top-2 border-[3px] border-red md:-bottom-3 md:-right-3 md:left-3 md:top-3"
             aria-hidden="true"
           />
           <div className="duotone absolute inset-0 border-[3px] border-ink">
             <img
               src={heroWorkshop}
               alt="Bolts team working on a robot chassis in the workshop"
-              width={1200}
-              height={800}
+              width={800}
+              height={500}
             />
           </div>
         </div>

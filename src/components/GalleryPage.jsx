@@ -18,17 +18,17 @@ export default function GalleryPage() {
             Build log photos from the Bolts workshop.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-5">
           {galleryPhotos.map((photo) => (
             <figure
               key={photo.caption}
-              className="relative m-0 min-h-[220px] overflow-hidden border-[3px] border-ink shadow-[8px_8px_0_var(--ink)]"
+              className="relative m-0 min-h-[160px] overflow-hidden border-[3px] border-ink shadow-[6px_6px_0_var(--ink)] sm:min-h-[180px]"
             >
               <div className="duotone absolute inset-0">
-                <img src={photo.src} alt={photo.alt} width={800} height={600} />
+                <img src={photo.src} alt={photo.alt} width={640} height={420} />
               </div>
-              <figcaption className="absolute bottom-3 left-3 z-[1]">
-                <span className="inline-block border-2 border-ink bg-paper px-2 py-1 font-mono text-[11px] uppercase tracking-[0.08em]">
+              <figcaption className="absolute bottom-2 left-2 z-[1]">
+                <span className="inline-block border-2 border-ink bg-paper px-2 py-1 font-mono text-[10px] uppercase tracking-[0.08em]">
                   {photo.caption}
                 </span>
               </figcaption>
