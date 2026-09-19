@@ -3,19 +3,22 @@ import { heroWorkshop } from "../data/photos";
 
 export default function Hero() {
   return (
-    <section id="top" className="section-pad bg-paper py-8 md:py-16">
-      <div className="mb-6 md:mb-10">
+    <section
+      id="top"
+      className="section-pad relative z-0 overflow-hidden bg-paper py-8 md:py-12"
+    >
+      <div className="mb-6 md:mb-8">
         <div className="mono-label mb-4 inline-block -rotate-2 bg-ink px-3 py-1.5 text-[12px] text-paper md:text-[13px]">
           SDSU VEX U Robotics
         </div>
-        <h1 className="headline text-[clamp(80px,14vw,184px)] tracking-[-0.005em]">
+        <h1 className="headline text-[clamp(64px,11vw,140px)] tracking-[-0.005em]">
           <span className="misreg-red block">Founding year.</span>
           <span className="misreg-ink block">No brakes.</span>
         </h1>
       </div>
 
-      <div className="grid items-start gap-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-16">
-        <div className="order-2 flex flex-col gap-7 md:order-1">
+      <div className="grid items-center gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-10">
+        <div className="flex flex-col gap-6">
           <p className="max-w-[460px] text-base leading-relaxed text-ink md:text-xl md:leading-relaxed">
             Bolts is a brand new SDSU VEX U team. We are building the robot, the
             code, and the culture from scratch.
@@ -36,17 +39,18 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative order-1 mx-auto h-[140px] w-full max-w-md md:order-2 md:mx-0 md:mr-4 md:h-[200px] md:max-w-lg">
+        <div className="relative w-full max-w-[320px] justify-self-start md:max-w-[360px] md:justify-self-end">
           <div
-            className="halftone-red absolute -bottom-2 -right-2 left-2 top-2 border-[3px] border-red md:-bottom-3 md:-right-3 md:left-3 md:top-3"
+            className="halftone-red absolute -bottom-2 -right-2 left-2 top-2 -z-10 border-[3px] border-red"
             aria-hidden="true"
           />
-          <div className="duotone absolute inset-0 border-[3px] border-ink">
+          <div className="duotone relative aspect-[4/3] w-full overflow-hidden border-[3px] border-ink">
             <img
               src={heroWorkshop}
               alt="Bolts team working on a robot chassis in the workshop"
-              width={800}
-              height={500}
+              width={640}
+              height={480}
+              className="h-full w-full object-cover"
             />
           </div>
         </div>

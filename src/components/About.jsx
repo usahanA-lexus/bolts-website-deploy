@@ -22,7 +22,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="section-pad scroll-mt-24 border-t-[3px] border-ink bg-paper py-12 md:py-[88px]"
+      className="section-pad relative z-10 scroll-mt-24 overflow-hidden border-t-[3px] border-ink bg-paper py-12 md:py-[88px]"
     >
       <div className="mb-8 flex flex-col gap-4 md:mb-12 md:gap-5">
         <div className="sticker">01 / About</div>
