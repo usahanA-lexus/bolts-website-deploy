@@ -55,17 +55,17 @@ function FlipCard({ member }) {
       onKeyDown={onKeyDown}
     >
       <div
-        className={`flip-inner relative min-h-[220px] ${flipped ? "is-flipped" : ""}`}
+        className={`flip-inner relative min-h-[260px] ${flipped ? "is-flipped" : ""}`}
       >
-        <div className="flip-face flip-front flex h-full min-h-[220px] flex-col border-[3px] border-ink bg-paper text-ink shadow-[5px_5px_0_var(--ink)]">
-          <div className="duotone h-[120px] border-b-[3px] border-ink">
+        <div className="flip-face flip-front flex h-full min-h-[260px] flex-col border-[3px] border-ink bg-paper text-ink shadow-[5px_5px_0_var(--ink)]">
+          <div className="duotone aspect-square w-full border-b-[3px] border-ink">
             {src ? (
               <img
                 src={src}
                 alt=""
                 width={400}
                 height={400}
-                className="h-full w-full object-cover object-top"
+                className="h-full w-full object-cover object-[center_20%]"
               />
             ) : (
               <div className="flex h-full items-center justify-center bg-ink">
@@ -86,7 +86,7 @@ function FlipCard({ member }) {
           </div>
         </div>
 
-        <div className="flip-face flip-back relative flex min-h-[220px] flex-col justify-between overflow-hidden border-[3px] border-ink bg-ink p-4 text-paper shadow-[5px_5px_0_var(--red)]">
+        <div className="flip-face flip-back relative flex min-h-[260px] flex-col justify-between overflow-hidden border-[3px] border-ink bg-ink p-4 text-paper shadow-[5px_5px_0_var(--red)]">
           <div
             className="halftone-ink pointer-events-none absolute inset-0 opacity-30"
             aria-hidden="true"
@@ -121,14 +121,14 @@ function ExecCard({ person }) {
 
   return (
     <article className="flex flex-col overflow-hidden border-[3px] border-ink bg-ink text-paper shadow-[6px_6px_0_var(--red)]">
-      <div className="duotone h-[120px] border-b-[3px] border-paper/20 bg-paper">
+      <div className="duotone aspect-square w-full border-b-[3px] border-ink bg-paper">
         {src ? (
           <img
             src={src}
             alt={`${person.name}, ${person.execTitle}`}
             width={400}
             height={400}
-            className="h-full w-full object-cover object-top"
+            className="h-full w-full object-cover object-[center_20%]"
           />
         ) : (
           <div className="flex h-full items-center justify-center bg-ink">
