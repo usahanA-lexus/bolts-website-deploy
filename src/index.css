@@ -194,3 +194,90 @@
     }
   }
 }
+
+.scrapbook-page {
+  background-color: var(--paper);
+  background-image: radial-gradient(#d6bea6 0.8px, transparent 0.8px);
+  background-size: 24px 24px;
+  color: #392d35;
+}
+
+.scrapbook-label {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border: 1px dashed #ad4761;
+  border-radius: 999px;
+  background: #fce0e8;
+  color: #913249;
+  font-weight: 700;
+  transform: rotate(-3deg);
+}
+
+.scrapbook-photo {
+  position: relative;
+  padding: 12px 12px 8px;
+  background: #fff;
+  border: 1px solid #ece2d6;
+  box-shadow: 3px 7px 0 #e7d9ca80, 0 12px 24px #5c403315;
+  transform: rotate(var(--photo-tilt));
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.scrapbook-tape {
+  position: absolute;
+  z-index: 1;
+  width: 88px;
+  height: 27px;
+  left: calc(50% - 44px);
+  top: -14px;
+  background: var(--tape-color);
+  opacity: 0.9;
+  transform: rotate(-5deg);
+  border-inline: 2px dashed #ffffff80;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .scrapbook-photo:hover {
+    transform: rotate(0) translateY(-5px);
+    box-shadow: 0 14px 28px #5c403325;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrapbook-photo { transition: none; }
+}
+
+
+/* The fish cursor is intentionally limited to the Whimsical page. */
+.whimsical-cursor,
+.whimsical-cursor * {
+  cursor: url("./assets/whimisical assets/cursor-small.png") 8 8, auto;
+}
+
+.hero-robot-track {
+  --robot-width: clamp(110px, 15vw, 160px);
+  position: relative;
+  max-width: 48rem;
+  height: var(--robot-width);
+  border-bottom: 2px dashed var(--ink);
+}
+
+.hero-robot {
+  position: absolute;
+  bottom: 0;
+  width: var(--robot-width);
+  height: var(--robot-width);
+  animation: robot-cruise 4s ease-in-out infinite alternate;
+}
+
+@keyframes robot-cruise {
+  from { left: 0; }
+  to { left: calc(100% - var(--robot-width)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-robot {
+    animation: none;
+    left: calc(50% - var(--robot-width) / 2);
+  }
+}

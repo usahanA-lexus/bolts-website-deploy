@@ -3,6 +3,12 @@ import roster from "../data/roster.json";
 import site from "../data/site.json";
 import { teamPhotos } from "../data/photos";
 
+const portraitClasses = {
+  Alexus: "object-contain object-bottom origin-bottom scale-75",
+  Paul: "object-cover object-[42%_center]",
+  John: "object-cover object-center origin-[53%_45%] scale-[1.6]",
+};
+
 function Badges({ member }) {
   return (
     <div className="flex flex-wrap gap-1.5">
@@ -26,7 +32,7 @@ function MemberCard({ member, isSpinning }) {
   return (
     <article className="flex flex-col overflow-hidden border-[3px] border-ink bg-paper text-ink shadow-[5px_5px_0_var(--ink)]">
       <div
-        className={`duotone aspect-square w-full overflow-hidden border-b-[3px] border-ink ${
+        className={`aspect-square w-full overflow-hidden border-b-[3px] border-ink ${
           isSpinning ? "animate-spin-decelerate" : ""
         }`}
       >
@@ -36,7 +42,7 @@ function MemberCard({ member, isSpinning }) {
             alt={member.name}
             width={400}
             height={400}
-            className="h-full w-full object-cover object-[center_20%]"
+            className={`h-full w-full ${portraitClasses[member.name] || "object-cover object-[center_20%]"}`}
           />
         ) : (
           <div className="flex h-full items-center justify-center bg-ink">
@@ -54,6 +60,9 @@ function MemberCard({ member, isSpinning }) {
           </div>
         ) : null}
         <Badges member={member} />
+        {member.role ? (
+          <div className="text-sm text-muted-paper">{member.role}</div>
+        ) : null}
       </div>
     </article>
   );
@@ -65,7 +74,7 @@ function ExecCard({ person, isSpinning }) {
   return (
     <article className="flex flex-col overflow-hidden border-[3px] border-ink bg-ink text-paper shadow-[6px_6px_0_var(--red)]">
       <div
-        className={`duotone aspect-square w-full overflow-hidden border-b-[3px] border-ink bg-paper ${
+        className={`aspect-square w-full overflow-hidden border-b-[3px] border-ink bg-paper ${
           isSpinning ? "animate-spin-decelerate" : ""
         }`}
       >
@@ -75,7 +84,7 @@ function ExecCard({ person, isSpinning }) {
             alt={`${person.name}, ${person.execTitle}`}
             width={400}
             height={400}
-            className="h-full w-full object-cover object-[center_20%]"
+            className={`h-full w-full ${portraitClasses[person.name] || "object-cover object-[center_20%]"}`}
           />
         ) : (
           <div className="flex h-full items-center justify-center bg-ink">

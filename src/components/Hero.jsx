@@ -13,8 +13,27 @@ export default function Hero() {
         </div>
         <h1 className="headline text-[clamp(64px,11vw,140px)] tracking-[-0.005em]">
           <span className="misreg-red block">Founding year.</span>
-          <span className="misreg-ink block">No brakes.</span>
-        </h1>
+        </h1> 
+        {/* The robot is created here & animated with CSS keyframes in src/styles/animations.css */}
+        <div className="hero-robot-track mt-4" role="img" aria-label="A little red robot moving side to side">
+          <svg className="hero-robot" viewBox="0 0 160 150" fill="none" aria-hidden="true">
+            <g stroke="var(--ink)" strokeWidth="4" strokeLinejoin="round"> 
+              <path d="M80 27V13" />
+              <circle cx="80" cy="9" r="6" fill="var(--red)" />
+              <rect x="43" y="28" width="74" height="49" rx="12" fill="var(--paper)" />
+              <circle cx="64" cy="48" r="5" fill="var(--ink)" stroke="none" />
+              <circle cx="96" cy="48" r="5" fill="var(--ink)" stroke="none" />
+              <path d="M69 62Q80 72 91 62" strokeLinecap="round" />
+              <path d="M43 48H34V60H43M117 48H126V60H117" />
+              <rect x="42" y="81" width="76" height="46" rx="7" fill="var(--red)" />
+              <path d="M42 93L25 101L19 88M118 93L135 101L141 88" strokeLinecap="round" />
+              <rect x="36" y="125" width="88" height="17" rx="8" fill="var(--ink)" />
+              <circle cx="50" cy="133" r="4" fill="var(--paper)" stroke="none" />
+              <circle cx="80" cy="133" r="4" fill="var(--paper)" stroke="none" />
+              <circle cx="110" cy="133" r="4" fill="var(--paper)" stroke="none" />
+            </g>
+          </svg>
+        </div>
       </div>
 
       <div className="grid items-center gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-10">

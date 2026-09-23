@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { galleryPhotos } from "../data/photos";
+import { galleryEvents } from "../data/galleryImages";
 
 function positionClass(position) {
   if (position === "bottom") return "object-bottom";
@@ -17,7 +18,7 @@ function GalleryTile({ photo, large = false, inkShadow = true }) {
           : "min-h-[110px] md:min-h-[130px]"
       } ${inkShadow ? "shadow-[6px_6px_0_var(--ink)]" : "shadow-[5px_5px_0_var(--red)]"}`}
     >
-      <div className="duotone absolute inset-0">
+      <div className="absolute inset-0">
         <img
           src={photo.src}
           alt={photo.alt}
@@ -36,7 +37,13 @@ function GalleryTile({ photo, large = false, inkShadow = true }) {
 }
 
 export default function GallerySection() {
-  const tiles = galleryPhotos.slice(0, 5);
+  const eventPreviews = galleryEvents.slice(0, 2).map((event) => ({
+    src: event.images[0].img,
+    alt: `${event.title} — album cover`,
+    caption: event.id === "potluck" ? "Potluck 2026" : "Summer Bonfire 2026",
+    position: "center",
+  }));
+  const tiles = [galleryPhotos[0], ...eventPreviews, ...galleryPhotos.slice(1, 3)];
 
   return (
     <section
@@ -47,7 +54,7 @@ export default function GallerySection() {
         <div className="flex flex-col gap-4 md:gap-5">
           <div className="sticker self-start">04 / Gallery</div>
           <h2 className="headline misreg-red text-[clamp(48px,8vw,96px)]">
-            From the shop.
+            From the scrapbook.
           </h2>
         </div>
         <p className="m-0 max-w-[380px] text-base leading-relaxed md:text-lg">

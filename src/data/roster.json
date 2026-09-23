@@ -3,7 +3,7 @@
     {
       "name": "Aiden",
       "major": "Mechanical Engineering",
-      "photo": "Aiden.jpg",
+      "photo": "Aiden.png",
       "team": null,
       "execTitle": "President",
       "founder": false,
@@ -13,7 +13,7 @@
     {
       "name": "Manju",
       "major": "",
-      "photo": "Manju!!.jpg",
+      "photo": "Manju!!.png",
       "team": null,
       "execTitle": "Advisor",
       "founder": false,
@@ -23,7 +23,7 @@
     {
       "name": "Nate",
       "major": "Computer Science",
-      "photo": "Nate.jpg",
+      "photo": "Nate.png",
       "team": 2,
       "execTitle": null,
       "founder": false,
@@ -33,7 +33,7 @@
     {
       "name": "Bryce",
       "major": "",
-      "photo": "Bryce.jpg",
+      "photo": "Bryce.png",
       "team": null,
       "execTitle": "Social Media",
       "founder": false,
@@ -43,7 +43,7 @@
     {
       "name": "Eric",
       "major": "Computer Science",
-      "photo": "Eric.jpg",
+      "photo": "Eric.png",
       "team": 2,
       "execTitle": "Secretary",
       "founder": false,
@@ -52,8 +52,9 @@
     },
     {
       "name": "Jesus",
+      "role": "Outreach Lead",
       "major": "Computer Science",
-      "photo": "Jesus.jpg",
+      "photo": "Jesus.png",
       "team": 1,
       "execTitle": null,
       "founder": false,
@@ -63,7 +64,7 @@
     {
       "name": "Nathan",
       "major": "Computer Science",
-      "photo": "Nathan.jpg",
+      "photo": "Nathan.png",
       "team": null,
       "execTitle": "Student Advisor",
       "founder": false,
@@ -72,8 +73,9 @@
     },
     {
       "name": "Zachary",
+      "role": "Outreach Lead",
       "major": "Computer Science",
-      "photo": "Zachary.jpg",
+      "photo": "Zachary.png",
       "team": 2,
       "execTitle": null,
       "founder": false,
@@ -83,7 +85,7 @@
     {
       "name": "Alexus",
       "major": "Computer Science",
-      "photo": "Alexus.jpg",
+      "photo": "Alexus.png",
       "team": null,
       "execTitle": "Digital Media",
       "founder": false,
@@ -93,7 +95,7 @@
     {
       "name": "Alan",
       "major": "Math",
-      "photo": "Alan.jpg",
+      "photo": "Alan.png",
       "team": 1,
       "execTitle": null,
       "founder": false,
@@ -103,7 +105,7 @@
     {
       "name": "Chris",
       "major": "Mechanical Engineering",
-      "photo": "Chris.jpg",
+      "photo": "Chris.png",
       "team": 2,
       "execTitle": "VP",
       "founder": false,
@@ -113,7 +115,7 @@
     {
       "name": "Melanie",
       "major": "Data Science",
-      "photo": "Melaine.jpg",
+      "photo": "Melaine.png",
       "team": 1,
       "execTitle": null,
       "founder": false,
@@ -123,7 +125,7 @@
     {
       "name": "Munazza",
       "major": "Computer Engineering",
-      "photo": "Munazza.jpg",
+      "photo": "Munazza.png",
       "team": 1,
       "execTitle": null,
       "founder": false,
@@ -132,8 +134,9 @@
     },
     {
       "name": "Rachel",
+      "role": "Outreach Lead",
       "major": "Computer Science",
-      "photo": "Rachel.jpg",
+      "photo": "Rachel.png",
       "team": 2,
       "execTitle": null,
       "founder": false,
@@ -141,7 +144,7 @@
       "flipBack": {}
     },
     {
-      "name": "Matt Long",
+      "name": "Matt",
       "major": "",
       "photo": "Matt.jpg",
       "team": null,
@@ -163,7 +166,7 @@
     {
       "name": "Jackson",
       "major": "Computer Science",
-      "photo": "Jackson.jpg",
+      "photo": "Jackson.png",
       "team": 1,
       "execTitle": null,
       "founder": false,
@@ -173,7 +176,7 @@
     {
       "name": "Paul",
       "major": "Mechanical Engineering",
-      "photo": "Paul.jpg",
+      "photo": "Paul.png",
       "team": 1,
       "execTitle": null,
       "founder": false,

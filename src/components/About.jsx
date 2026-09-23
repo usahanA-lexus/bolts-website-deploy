@@ -3,12 +3,12 @@ import React from "react";
 const cards = [
   {
     title: "Engineering",
-    body: "We design it, build it, break it, and rebuild it. Real hardware on a real bench.",
+    body: "We build the robots ourselves using VEX materials.",
     tone: "paper",
   },
   {
     title: "Programming",
-    body: "We write the code that makes the robot think, then test it until it stops surprising us.",
+    body: "We write how the robot moves and thinks.",
     tone: "red",
   },
   {
@@ -27,7 +27,7 @@ export default function About() {
       <div className="mb-8 flex flex-col gap-4 md:mb-12 md:gap-5">
         <div className="sticker">01 / About</div>
         <h2 className="headline misreg-red text-[clamp(48px,8vw,96px)]">
-          Not a casual club.
+          What we do
         </h2>
       </div>
 

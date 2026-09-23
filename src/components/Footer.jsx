@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "./logo2.png";
+import { contact } from "../data/contact";
 
 export default function Footer() {
   return (
@@ -38,19 +39,21 @@ export default function Footer() {
               Gallery
             </Link>
             <a
-              href="mailto:boltsrobotics@gmail.com"
+              href={`mailto:${contact.email}`}
               className="text-[15px] text-paper no-underline"
             >
-              boltsrobotics@gmail.com
+              {contact.email}
             </a>
             <a
-              href="https://linktr.ee/boltsrobotics"
+              href={contact.linktree}
               className="text-[15px] text-paper no-underline"
               target="_blank"
               rel="noreferrer"
             >
               Linktree
             </a>
+            <a href={contact.discord} target="_blank" rel="noreferrer" className="text-[15px] text-paper no-underline">Discord</a>
+            <Link to="/contact-form" className="text-[15px] text-paper no-underline">Contact / interest form</Link>
           </div>
         </div>
       </div>

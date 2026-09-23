@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { contact } from "../data/contact";
 
 const rows = [
   {
@@ -56,7 +57,7 @@ export default function Join() {
               Fill out the interest form
             </Link>
             <a
-              href="mailto:boltsrobotics@gmail.com"
+              href={`mailto:${contact.email}`}
               className="inline-flex items-center justify-center border-[3px] border-paper px-6 py-3.5 text-base font-semibold text-paper no-underline"
             >
               Email the team
@@ -66,12 +67,17 @@ export default function Join() {
           <p className="m-0 text-[15px] leading-snug text-paper">
             We are looking for sponsors.{" "}
             <a
-              href="mailto:boltsrobotics@gmail.com"
+              href={`mailto:${contact.email}`}
               className="text-red-on-ink underline"
             >
               Get in touch.
             </a>
           </p>
+          <div className="flex flex-wrap gap-5 text-paper">
+            <a href={contact.discord} target="_blank" rel="noreferrer" className="underline">Join our Discord</a>
+            <a href={contact.linktree} target="_blank" rel="noreferrer" className="underline">All our links</a>
+            <a href={`mailto:${contact.email}`} className="break-all underline">{contact.email}</a>
+          </div>
         </div>
       </div>
     </section>
