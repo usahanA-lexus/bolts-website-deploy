@@ -1,16 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { contact } from "../data/contact";
+import schedule from "../data/schedule.json";
 
+const gbm = schedule.recurring.find((event) => event.id === "gbm");
 const rows = [
   {
     label: "Meets",
     value:
-      "GBMs Fridays at 11:30 AM, plus Team 1 on Wednesdays and Team 2 on Mondays.",
+      `GBMs ${gbm.day}s at ${gbm.time}, plus Team 1 on Wednesdays and Team 2 on Mondays.`,
   },
   {
     label: "Where",
-    value: "GBMs in GMCS 549. Team meeting rooms are shared in club channels.",
+    value: `GBMs in ${gbm.room}. Team meeting rooms are shared in club channels.`,
   },
   {
     label: "Commitment",

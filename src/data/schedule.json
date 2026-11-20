@@ -5,9 +5,9 @@
       "id": "gbm",
       "title": "General body meeting (GBM), everyone",
       "day": "Friday",
-      "time": "11:30 AM",
-      "room": "GMCS 549",
-      "shortLabel": "GBM 11:30",
+      "time": "11:00 AM",
+      "room": "GMCS 307",
+      "shortLabel": "GBM 11:00",
       "kind": "gbm"
     },
     {
