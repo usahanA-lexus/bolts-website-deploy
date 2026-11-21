@@ -53,7 +53,6 @@ export default function Footer() {
               Linktree
             </a>
             <a href={contact.discord} target="_blank" rel="noreferrer" className="text-[15px] text-paper no-underline">Discord</a>
-            <Link to="/contact-form" className="text-[15px] text-paper no-underline">Contact / interest form</Link>
           </div>
         </div>
       </div>

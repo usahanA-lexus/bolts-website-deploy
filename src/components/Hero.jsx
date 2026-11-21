@@ -1,5 +1,5 @@
 import React from "react";
-import { heroWorkshop } from "../data/photos";
+import { heroWorkshop } from "../data/galleryImages";
 
 export default function Hero() {
   return (
@@ -65,8 +65,8 @@ export default function Hero() {
           />
           <div className="duotone relative aspect-[4/3] w-full overflow-hidden border-[3px] border-ink">
             <img
-              src={heroWorkshop}
-              alt="Bolts team working on a robot chassis in the workshop"
+              src={heroWorkshop.src}
+              alt={heroWorkshop.alt}
               width={640}
               height={480}
               className="h-full w-full object-cover"

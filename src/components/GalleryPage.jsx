@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { contact } from "../data/contact";
 import { galleryEvents } from "../data/galleryImages";
 
 export default function GalleryPage() {
@@ -27,6 +28,15 @@ export default function GalleryPage() {
         <header className="mx-auto mb-16 max-w-3xl text-center">
           <h1 className="text-5xl font-black tracking-tight sm:text-7xl">Gallery<br /><span className="text-rose-700">Bolts scrapbook</span></h1>
           <p className="mx-auto mt-6 max-w-md text-lg text-stone-600">Pick a folder, peek inside, and relive a little of the fun.</p>
+          <p className="mt-5 text-stone-600">Want to see more of what we’re building?</p>
+          <a
+            href={contact.instagram}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-3 inline-flex min-h-[44px] items-center rounded-full bg-rose-700 px-5 font-bold text-white no-underline hover:bg-rose-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rose-800"
+          >
+            Follow us on Instagram
+          </a>
           <div aria-hidden="true" className="mt-8 flex items-center justify-center gap-3 overflow-hidden text-2xl text-rose-600 sm:text-3xl">
             <span className="min-w-0 overflow-hidden whitespace-nowrap tracking-[0.3em]">✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿</span>
             <span className="shrink-0">🔧</span>

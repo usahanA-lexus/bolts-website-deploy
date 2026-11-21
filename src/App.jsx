@@ -10,7 +10,6 @@ import GalleryPage from "./components/GalleryPage";
 import Join from "./components/Join";
 import Footer from "./components/Footer";
 import Grain from "./components/Grain";
-import ContactForm from "./components/ContactForm";
 import WhimsicalPage from "./components/WhimsicalPage";
 
 function HomePage() {
@@ -38,8 +37,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/whimsical" element={<WhimsicalPage />} />
-        <Route path="/contact-form" element={<ContactForm />} />
-        <Route path="/ContactForm" element={<Navigate to="/contact-form" replace />} />
+        <Route path="/contact-form" element={<Navigate to="/#join" replace />} />
+        <Route path="/ContactForm" element={<Navigate to="/#join" replace />} />
       </Routes>
     </Router>
   );

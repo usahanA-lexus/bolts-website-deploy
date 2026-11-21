@@ -1,13 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { galleryPhotos } from "../data/photos";
-import { galleryEvents } from "../data/galleryImages";
-
-function positionClass(position) {
-  if (position === "bottom") return "object-bottom";
-  if (position === "top") return "object-top";
-  return "object-center";
-}
+import { landingGalleryPhotos } from "../data/galleryImages";
 
 function GalleryTile({ photo, large = false, inkShadow = true }) {
   return (
@@ -24,7 +17,7 @@ function GalleryTile({ photo, large = false, inkShadow = true }) {
           alt={photo.alt}
           width={640}
           height={420}
-          className={`h-full w-full object-cover ${positionClass(photo.position)}`}
+          className={`h-full w-full object-cover ${photo.alignBottom ? "object-bottom" : "object-center"}`}
         />
       </div>
       <figcaption className="absolute bottom-2 left-2 z-[1] md:bottom-3 md:left-3">
@@ -37,14 +30,6 @@ function GalleryTile({ photo, large = false, inkShadow = true }) {
 }
 
 export default function GallerySection() {
-  const eventPreviews = galleryEvents.slice(0, 2).map((event) => ({
-    src: event.images[0].img,
-    alt: `${event.title} — album cover`,
-    caption: event.id === "potluck" ? "Potluck 2026" : "Summer Bonfire 2026",
-    position: "center",
-  }));
-  const tiles = [galleryPhotos[0], ...eventPreviews, ...galleryPhotos.slice(1, 3)];
-
   return (
     <section
       id="gallery"
@@ -65,11 +50,14 @@ export default function GallerySection() {
       </div>
 
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:grid-rows-[repeat(2,minmax(0,160px))] md:gap-4">
-        <GalleryTile photo={tiles[0]} large />
-        <GalleryTile photo={tiles[1]} />
-        <GalleryTile photo={tiles[2]} inkShadow={false} />
-        <GalleryTile photo={tiles[3]} inkShadow={false} />
-        <GalleryTile photo={tiles[4]} />
+        {landingGalleryPhotos.map((photo, index) => (
+          <GalleryTile
+            key={photo.src}
+            photo={photo}
+            large={index === 0}
+            inkShadow={index !== 2 && index !== 3}
+          />
+        ))}
       </div>
     </section>
   );

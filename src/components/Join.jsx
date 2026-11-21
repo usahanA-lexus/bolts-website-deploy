@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { contact } from "../data/contact";
 import schedule from "../data/schedule.json";
 
@@ -52,12 +51,14 @@ export default function Join() {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <Link
-              to="/contact-form"
+            <a
+              href={contact.discord}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center justify-center border-[3px] border-paper bg-paper px-6 py-3.5 text-base font-semibold text-ink no-underline"
             >
-              Fill out the interest form
-            </Link>
+              Join our Discord
+            </a>
             <a
               href={`mailto:${contact.email}`}
               className="inline-flex items-center justify-center border-[3px] border-paper px-6 py-3.5 text-base font-semibold text-paper no-underline"
@@ -76,7 +77,6 @@ export default function Join() {
             </a>
           </p>
           <div className="flex flex-wrap gap-5 text-paper">
-            <a href={contact.discord} target="_blank" rel="noreferrer" className="underline">Join our Discord</a>
             <a href={contact.linktree} target="_blank" rel="noreferrer" className="underline">All our links</a>
             <a href={`mailto:${contact.email}`} className="break-all underline">{contact.email}</a>
           </div>
