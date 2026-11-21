@@ -4,7 +4,7 @@ import site from "../data/site.json";
 import { teamPhotos } from "../data/photos";
 
 const portraitClasses = {
-  Alexus: "object-contain object-bottom origin-bottom scale-75",
+  Alexus: "object-contain origin-[42%_39%] scale-150",
   Paul: "object-cover object-[42%_center]",
   John: "object-cover object-center origin-[53%_45%] scale-[1.6]",
 };
